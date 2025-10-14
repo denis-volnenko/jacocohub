@@ -13,6 +13,7 @@ import java.util.UUID;
 @Getter
 @Setter
 @Entity
+@Table(name = "hub_artifact")
 public class Artifact {
 
     @Id
