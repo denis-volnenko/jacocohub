@@ -48,6 +48,4 @@ public class GroupServiceBean implements GroupService {
         return saveByName(name);
     }
 
-
-
 }

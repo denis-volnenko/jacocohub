@@ -17,8 +17,14 @@ public final class JacocoResultBuilder {
     }
 
     @NonNull
-    public JacocoResultBuilder artifact(String artifact) {
+    public JacocoResultBuilder artifact(@NonNull final String artifact) {
         jacocoResultDto.setArtifact(artifact);
+        return this;
+    }
+
+    @NonNull
+    public JacocoResultBuilder group(@NonNull final String group) {
+        jacocoResultDto.setGroup(group);
         return this;
     }
 
