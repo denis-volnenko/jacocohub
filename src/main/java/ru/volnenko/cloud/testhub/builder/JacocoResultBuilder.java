@@ -17,6 +17,12 @@ public final class JacocoResultBuilder {
     }
 
     @NonNull
+    public JacocoResultBuilder artifact(String artifact) {
+        jacocoResultDto.setArtifact(artifact);
+        return this;
+    }
+
+    @NonNull
     public JacocoResultDto build() {
         return jacocoResultDto;
     }

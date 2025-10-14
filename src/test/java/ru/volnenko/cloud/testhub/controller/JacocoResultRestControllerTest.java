@@ -9,14 +9,16 @@ import ru.volnenko.cloud.testhub.dto.JacocoResultDto;
 import ru.volnenko.cloud.testhub.dto.ResultDto;
 
 @SpringBootTest
-public class JacocoResultControllerTest {
+public class JacocoResultRestControllerTest {
 
     @Autowired
-    private JacocoResultController controller;
+    private JacocoResultRestController controller;
 
     @Test
     public void testPublish() {
-        @NonNull final JacocoResultDto dto = JacocoResultDto.create().build();
+        @NonNull final JacocoResultDto dto = JacocoResultDto.create()
+                .artifact("testhub")
+                .build();
         @NonNull final ResultDto resultDto = controller.publish(dto);
         Assert.isTrue(resultDto.getSuccess(), resultDto.getMessage());
     }

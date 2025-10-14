@@ -22,7 +22,7 @@ public class Group {
     private String id = UUID.randomUUID().toString();
 
     @NonNull
-    @Column(name = "name")
+    @Column(name = "name", unique = true)
     private String name = "";
 
     @CreationTimestamp

@@ -1,12 +1,15 @@
 package ru.volnenko.cloud.testhub.service;
 
 import lombok.NonNull;
+import org.apache.tomcat.jni.Library;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+import ru.volnenko.cloud.testhub.enumerated.ArtifactType;
 import ru.volnenko.cloud.testhub.model.Artifact;
 import ru.volnenko.cloud.testhub.repository.ArtifactRepository;
 
+import java.util.Collections;
 import java.util.List;
 
 @Service
@@ -22,6 +25,20 @@ public class ArtifactServiceBean implements ArtifactService {
         return artifactRepository.findAll();
     }
 
+    @NonNull
+    @Override
+    @Transactional(readOnly = true)
+    public List<Artifact> findAllApplication() {
+        return Collections.emptyList();
+    }
+
+    @NonNull
+    @Override
+    @Transactional(readOnly = true)
+    public List<Library> findAllLibrary() {
+        return Collections.emptyList();
+    }
+
     @Override
     @Transactional(readOnly = true)
     public long count() {
@@ -33,6 +50,41 @@ public class ArtifactServiceBean implements ArtifactService {
     @Transactional
     public Artifact save(@NonNull final Artifact artifact) {
         return artifactRepository.save(artifact);
+    }
+
+    @NonNull
+    @Override
+    @Transactional
+    public Artifact save(@NonNull String name, @NonNull final String groupId) {
+        @NonNull final Artifact artifact = new Artifact();
+        artifact.setGroupId(groupId);
+        artifact.setName(name);
+        return save(artifact);
+    }
+
+    @NonNull
+    @Override
+    @Transactional
+    public Artifact merge(@NonNull String name, @NonNull String groupId, @NonNull ArtifactType artifactType) {
+        final Artifact artifact = findByNameAndGroupId(name, groupId);
+        if (artifact != null) return artifact;
+        return save(name, groupId, artifactType);
+    }
+
+    @Override
+    @Transactional
+    public Artifact save(@NonNull String name, @NonNull String groupId, @NonNull ArtifactType artifactType) {
+        @NonNull final Artifact artifact = new Artifact();
+        artifact.setGroupId(groupId);
+        artifact.setName(name);
+        artifact.setType(artifactType);
+        return save(artifact);
+    }
+
+    @Override
+    @Transactional(readOnly = true)
+    public Artifact findByNameAndGroupId(@NonNull final String name, @NonNull final String groupId) {
+        return artifactRepository.findByNameAndGroupId(name, groupId);
     }
 
 }

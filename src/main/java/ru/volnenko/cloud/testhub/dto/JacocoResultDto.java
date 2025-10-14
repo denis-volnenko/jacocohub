@@ -4,6 +4,7 @@ import lombok.Getter;
 import lombok.NonNull;
 import lombok.Setter;
 import ru.volnenko.cloud.testhub.builder.JacocoResultBuilder;
+import ru.volnenko.cloud.testhub.enumerated.ArtifactType;
 
 @Getter
 @Setter
@@ -25,6 +26,9 @@ public final class JacocoResultDto {
 
     @NonNull
     private String group = "";
+
+    @NonNull
+    private String type = ArtifactType.APPLICATION.toString();
 
     @NonNull
     private String artifact = "";

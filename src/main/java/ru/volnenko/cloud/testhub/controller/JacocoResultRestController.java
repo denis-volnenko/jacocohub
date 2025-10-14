@@ -9,7 +9,7 @@ import ru.volnenko.cloud.testhub.dto.ResultDto;
 
 @RestController
 @RequestMapping("/api/result/jacoco")
-public interface JacocoResultController {
+public interface JacocoResultRestController {
 
     @PostMapping(value = "/publish", produces = "application/json", consumes = "application/json")
     ResultDto publish(@NonNull JacocoResultDto result);

@@ -27,12 +27,8 @@ public class Artifact {
     private String groupId;
 
     @NonNull
-    @Column(name = "name")
+    @Column(name = "name", unique = true)
     private String name = "";
-
-    @NonNull
-    @Column(name = "code")
-    private String code = "";
 
     @NonNull
     @Column(name = "type")
