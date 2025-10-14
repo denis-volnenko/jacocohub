@@ -16,6 +16,7 @@ public class JacocoServiceBean implements JacocoService {
     @Override
     public Jacoco create(
             @NonNull final String releaseId,
+            @NonNull final String branchId,
             @NonNull final Float instructions,
             @NonNull final Float branches
     ) {
@@ -25,6 +26,7 @@ public class JacocoServiceBean implements JacocoService {
         jacoco.setBranches(branches);
         jacoco.setInstructions(instructions);
         jacoco.setPercent(percent);
+        jacoco.setBranchId(branchId);
         return jacocoRepository.save(jacoco);
     }
 

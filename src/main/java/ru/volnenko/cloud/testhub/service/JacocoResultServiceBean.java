@@ -26,10 +26,15 @@ public class JacocoResultServiceBean implements JacocoResultService {
     @Autowired
     private JacocoService jacocoService;
 
+    @Autowired
+    private BranchService branchService;
+
     @Override
     @NonNull
     @Transactional
     public Jacoco publish(@NonNull final JacocoResultDto result) {
+        @NonNull final String branchName = result.getBranch();
+        @NonNull final Branch branch = branchService.mergeByName(branchName);
         @NonNull final String groupName = result.getGroup();
         @NonNull final Group group = groupService.mergeByName(groupName);
         @NonNull final String versionName = result.getVersion();
@@ -38,7 +43,7 @@ public class JacocoResultServiceBean implements JacocoResultService {
         @NonNull final ArtifactType artifactType = ArtifactType.valueOf(result.getType());
         @NonNull final Artifact artifact = artifactService.merge(artifactName, group.getId(), artifactType);
         @NonNull final Release release = releaseService.mergeByArtifactIdAndVersionId(artifact.getId(), version.getId());
-        return jacocoService.create(release.getId(), result.getInstructions(), result.getBranches());
+        return jacocoService.create(release.getId(), branch.getId(), result.getInstructions(), result.getBranches());
     }
 
 }

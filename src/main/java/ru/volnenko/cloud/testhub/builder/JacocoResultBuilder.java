@@ -78,6 +78,12 @@ public final class JacocoResultBuilder {
     }
 
     @NonNull
+    public JacocoResultBuilder branch(@NonNull final String branch) {
+        jacocoResultDto.setBranch(branch);
+        return this;
+    }
+
+    @NonNull
     public JacocoResultBuilder branches(@NonNull final Float branches) {
         jacocoResultDto.setBranches(branches);
         return this;

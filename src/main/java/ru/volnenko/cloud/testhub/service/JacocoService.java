@@ -8,6 +8,11 @@ import ru.volnenko.cloud.testhub.model.Jacoco;
 public interface JacocoService {
 
     @NonNull
-    Jacoco create(String releaseId, Float instructions, Float branches);
+    Jacoco create(
+            @NonNull String releaseId,
+            @NonNull String branchId,
+            @NonNull Float instructions,
+            @NonNull Float branches
+    );
 
 }

@@ -13,40 +13,26 @@ import java.util.UUID;
 @Getter
 @Setter
 @Entity
-@Table(name = "hub_jacoco")
-public class Jacoco {
+@Table(name = "hub_branch")
+public class Branch {
 
     @Id
     @NonNull
     @Column(name = "id")
     private String id = UUID.randomUUID().toString();
 
-    @Column(name = "release_id", nullable = false)
-    private String releaseId;
-
-    @Column(name = "branch_id")
-    private String branchId;
-
     @NonNull
-    @Column(name = "percent", nullable = false)
-    private Float percent = 0F;
-
-    @NonNull
-    @Column(name = "instructions", nullable = false)
-    private Float instructions = 0F;
-
-    @NonNull
-    @Column(name = "branches", nullable = false)
-    private Float branches = 0F;
+    @Column(name = "name", unique = true)
+    private String name = "";
 
     @CreationTimestamp
     @Temporal(TemporalType.TIMESTAMP)
-    @Column(name = "created", nullable = false)
+    @Column(name = "created")
     private Date created;
 
     @UpdateTimestamp
     @Temporal(TemporalType.TIMESTAMP)
-    @Column(name = "updated", nullable = false)
+    @Column(name = "updated")
     private Date updated;
 
 }
