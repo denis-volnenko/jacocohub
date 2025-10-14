@@ -26,7 +26,7 @@ public class Jacoco {
 
     @NonNull
     @Column(name = "percent", nullable = false)
-    private Double percent = 0D;
+    private Float percent = 0F;
 
     @NonNull
     @Column(name = "instructions", nullable = false)

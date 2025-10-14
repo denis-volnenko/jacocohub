@@ -23,6 +23,9 @@ public class JacocoResultServiceBean implements JacocoResultService {
     @Autowired
     private ReleaseService releaseService;
 
+    @Autowired
+    private JacocoService jacocoService;
+
     @Override
     @NonNull
     @Transactional
@@ -35,7 +38,7 @@ public class JacocoResultServiceBean implements JacocoResultService {
         @NonNull final ArtifactType artifactType = ArtifactType.valueOf(result.getType());
         @NonNull final Artifact artifact = artifactService.merge(artifactName, group.getId(), artifactType);
         @NonNull final Release release = releaseService.mergeByArtifactIdAndVersionId(artifact.getId(), version.getId());
-        return new Jacoco();
+        return jacocoService.create(release.getId(), result.getInstructions(), result.getBranches());
     }
 
 }
