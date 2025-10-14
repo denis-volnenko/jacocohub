@@ -21,25 +21,29 @@ public class Jacoco {
     @Column(name = "id")
     private String id = UUID.randomUUID().toString();
 
+    @Column(name = "release_id", nullable = false)
     private String releaseId;
 
     @NonNull
+    @Column(name = "percent", nullable = false)
     private Double percent = 0D;
 
     @NonNull
+    @Column(name = "instructions", nullable = false)
     private Double instructions = 0D;
 
     @NonNull
+    @Column(name = "branches", nullable = false)
     private Double branches = 0D;
 
     @CreationTimestamp
     @Temporal(TemporalType.TIMESTAMP)
-    @Column(name = "created")
+    @Column(name = "created", nullable = false)
     private Date created;
 
     @UpdateTimestamp
     @Temporal(TemporalType.TIMESTAMP)
-    @Column(name = "updated")
+    @Column(name = "updated", nullable = false)
     private Date updated;
 
 }

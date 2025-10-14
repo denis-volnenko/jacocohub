@@ -3,10 +3,16 @@ package ru.volnenko.cloud.testhub.dto;
 import lombok.Getter;
 import lombok.NonNull;
 import lombok.Setter;
+import ru.volnenko.cloud.testhub.builder.JacocoResultBuilder;
 
 @Getter
 @Setter
 public final class JacocoResultDto {
+
+    @NonNull
+    public static JacocoResultBuilder create() {
+        return JacocoResultBuilder.create();
+    }
 
     @NonNull
     private String parentGroup = "";

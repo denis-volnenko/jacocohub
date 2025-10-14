@@ -7,14 +7,14 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import ru.volnenko.cloud.testhub.dto.JacocoResultDto;
 import ru.volnenko.cloud.testhub.dto.ResultDto;
-import ru.volnenko.cloud.testhub.service.JacocoResultService;
+import ru.volnenko.cloud.testhub.service.JacocoResultServiceBean;
 
 @Controller
 @RequestMapping("/api/result/jacoco")
 public class JacocoResultControllerBean implements JacocoResultController {
 
     @Autowired
-    private JacocoResultService jacocoResultService;
+    private JacocoResultServiceBean jacocoResultService;
 
     @PostMapping(value = "/publish", produces = "application/json", consumes = "application/json")
     public ResultDto publish(@NonNull final JacocoResultDto result) {

@@ -1,20 +1,24 @@
 package ru.volnenko.cloud.testhub.service;
 
-import org.springframework.beans.factory.annotation.Autowired;
+import lombok.NonNull;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 import ru.volnenko.cloud.testhub.model.Artifact;
-import ru.volnenko.cloud.testhub.repository.ArtifactRepository;
 
 import java.util.List;
 
 @Service
-public class ArtifactService {
+public interface ArtifactService {
 
-    @Autowired
-    private ArtifactRepository artifactRepository;
+    @NonNull
+    @Transactional(readOnly = true)
+    List<Artifact> findAll();
 
-    public List<Artifact> findAll() {
-        return artifactRepository.findAll();
-    }
+    @Transactional(readOnly = true)
+    long count();
+
+    @NonNull
+    @Transactional
+    Artifact save(@NonNull Artifact artifact);
 
 }

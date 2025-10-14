@@ -1,4 +1,4 @@
-package ru.volnenko.cloud.testhub.model;
+package ru.volnenko.cloud.testhub.enumerated;
 
 public enum ArtifactType {
 

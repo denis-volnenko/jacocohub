@@ -1,13 +1,13 @@
 package ru.volnenko.cloud.testhub.controller;
 
 import lombok.NonNull;
-import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
 import ru.volnenko.cloud.testhub.dto.JacocoResultDto;
 import ru.volnenko.cloud.testhub.dto.ResultDto;
 
-@Controller
+@RestController
 @RequestMapping("/api/result/jacoco")
 public interface JacocoResultController {
 

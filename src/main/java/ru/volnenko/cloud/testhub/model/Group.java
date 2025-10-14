@@ -21,6 +21,10 @@ public class Group {
     @Column(name = "id")
     private String id = UUID.randomUUID().toString();
 
+    @NonNull
+    @Column(name = "name")
+    private String name = "";
+
     @CreationTimestamp
     @Temporal(TemporalType.TIMESTAMP)
     @Column(name = "created")
