@@ -37,9 +37,9 @@ public final class JacocoResultDto {
     private String version = "";
 
     @NonNull
-    private Double branches = 0D;
+    private Float branches = 0F;
 
     @NonNull
-    private Double instructions = 0D;
+    private Float instructions = 0F;
 
 }

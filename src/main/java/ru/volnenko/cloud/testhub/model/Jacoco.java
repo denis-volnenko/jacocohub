@@ -30,11 +30,11 @@ public class Jacoco {
 
     @NonNull
     @Column(name = "instructions", nullable = false)
-    private Double instructions = 0D;
+    private Float instructions = 0F;
 
     @NonNull
     @Column(name = "branches", nullable = false)
-    private Double branches = 0D;
+    private Float branches = 0F;
 
     @CreationTimestamp
     @Temporal(TemporalType.TIMESTAMP)
