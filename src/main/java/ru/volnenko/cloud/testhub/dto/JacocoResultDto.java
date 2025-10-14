@@ -31,7 +31,7 @@ public final class JacocoResultDto {
     private String type = ArtifactType.APPLICATION.toString();
 
     @NonNull
-    private String branch = "";
+    private String branch = "master";
 
     @NonNull
     private String artifact = "";
