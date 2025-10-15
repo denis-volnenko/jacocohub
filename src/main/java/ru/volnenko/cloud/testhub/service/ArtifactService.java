@@ -31,6 +31,10 @@ public interface ArtifactService {
 
     @NonNull
     @Transactional(readOnly = true)
+    List<Artifact> findAllArtifact();
+
+    @NonNull
+    @Transactional(readOnly = true)
     List<Artifact> findAllApplication();
 
     @NonNull

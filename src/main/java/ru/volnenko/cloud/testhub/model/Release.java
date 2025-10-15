@@ -2,6 +2,7 @@ package ru.volnenko.cloud.testhub.model;
 
 import jakarta.persistence.*;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.NonNull;
 import lombok.Setter;
 import org.hibernate.annotations.CreationTimestamp;
@@ -13,6 +14,7 @@ import java.util.UUID;
 @Getter
 @Setter
 @Entity
+@NoArgsConstructor
 @Table(name = "hub_release")
 public class Release {
 
@@ -20,8 +22,10 @@ public class Release {
     @NonNull
     private String id = UUID.randomUUID().toString();
 
+    @Column(name = "artifact_id")
     private String artifactId;
 
+    @Column(name = "version_id")
     private String versionId;
 
     @CreationTimestamp

@@ -20,6 +20,12 @@ public class ArtifactServiceBean implements ArtifactService {
 
     @NonNull
     @Override
+    public List<Artifact> findAllArtifact() {
+        return Collections.emptyList();
+    }
+
+    @NonNull
+    @Override
     @Transactional(readOnly = true)
     public List<Artifact> findAll() {
         return artifactRepository.findAll();

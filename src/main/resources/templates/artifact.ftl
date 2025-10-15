@@ -21,6 +21,7 @@
         <th>№</th>
         <th>ДАТА СОЗДАНИЯ</th>
         <th>ВЕТКА</th>
+        <th>ВЕРСИЯ</th>
         <th>ПРОЦЕНТ</th>
         <th>INSTRUCTIONS</th>
         <th>BRANCHES</th>
@@ -32,6 +33,7 @@
         <td width="30" nowrap="nowrap" align="center"><#if index??>${index?string["00"]}.</#if></td>
         <td width="100%">${result.created}</td>
         <td width="200" nowrap="nowrap">${result.branchId}</td>
+        <td width="200" nowrap="nowrap">${result.releaseId}</td>
         <td align="right">${result.percent}%</td>
         <td align="right">${result.branches}%</td>
         <td align="right">${result.instructions}%</td>
