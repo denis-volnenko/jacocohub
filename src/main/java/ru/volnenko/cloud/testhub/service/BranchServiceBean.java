@@ -9,7 +9,6 @@ import ru.volnenko.cloud.testhub.model.Branch;
 import ru.volnenko.cloud.testhub.repository.BranchRepository;
 
 import java.util.List;
-import java.util.Optional;
 
 @Service
 public class BranchServiceBean implements BranchService {

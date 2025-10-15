@@ -104,7 +104,6 @@
                         <a href="/" style="color: white; font-size: 25px; font-family: 'RobotoRegular'; text-decoration: none; color: silver;">TESTHUB</a>
                     </td>
                     <td width="100%" align="right" style="color: white;">
-                        <a style="color: white; margin-right: 10px; border-bottom: 1px dashed white;" href="/">ГЛАВНАЯ</a>
                         <a style="color: white; margin-right: 10px; border-bottom: 1px dashed white;" href="/ui/artifacts">АРТЕФАКТЫ</a>
                         <a style="color: white; margin-right: 10px; border-bottom: 1px dashed white;" href="/ui/applications">ПРИЛОЖЕНИЯ</a>
                         <a style="color: white; border-bottom: 1px dashed white;" href="/ui/libraries">БИБЛИОТЕКИ</a>
