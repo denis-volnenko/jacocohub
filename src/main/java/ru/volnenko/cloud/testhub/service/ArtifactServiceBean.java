@@ -1,7 +1,6 @@
 package ru.volnenko.cloud.testhub.service;
 
 import lombok.NonNull;
-import org.apache.tomcat.jni.Library;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -9,7 +8,6 @@ import ru.volnenko.cloud.testhub.enumerated.ArtifactType;
 import ru.volnenko.cloud.testhub.model.Artifact;
 import ru.volnenko.cloud.testhub.repository.ArtifactRepository;
 
-import java.util.Collections;
 import java.util.List;
 
 @Service
@@ -62,7 +60,7 @@ public class ArtifactServiceBean implements ArtifactService {
     @NonNull
     @Override
     @Transactional
-    public Artifact save(@NonNull String name, @NonNull final String groupId) {
+    public Artifact save(@NonNull final String name, @NonNull final String groupId) {
         @NonNull final Artifact artifact = new Artifact();
         artifact.setGroupId(groupId);
         artifact.setName(name);
@@ -72,19 +70,36 @@ public class ArtifactServiceBean implements ArtifactService {
     @NonNull
     @Override
     @Transactional
-    public Artifact merge(@NonNull String name, @NonNull String groupId, @NonNull ArtifactType artifactType) {
+    public Artifact merge(
+            @NonNull final String name,
+            @NonNull final String groupId,
+            @NonNull final ArtifactType artifactType,
+            @NonNull final Float coverage,
+            @NonNull final Float instructions,
+            @NonNull final Float branches
+    ) {
         final Artifact artifact = findByNameAndGroupId(name, groupId);
         if (artifact != null) return artifact;
-        return save(name, groupId, artifactType);
+        return save(name, groupId, artifactType, coverage, instructions, branches);
     }
 
     @Override
     @Transactional
-    public Artifact save(@NonNull String name, @NonNull String groupId, @NonNull ArtifactType artifactType) {
+    public Artifact save(
+            @NonNull final String name,
+            @NonNull final String groupId,
+            @NonNull final ArtifactType artifactType,
+            @NonNull final Float coverage,
+            @NonNull final Float instructions,
+            @NonNull final Float branches
+    ) {
         @NonNull final Artifact artifact = new Artifact();
         artifact.setGroupId(groupId);
         artifact.setName(name);
         artifact.setType(artifactType);
+        artifact.setCoverage(coverage);
+        artifact.setInstructions(instructions);
+        artifact.setBranches(branches);
         return save(artifact);
     }
 

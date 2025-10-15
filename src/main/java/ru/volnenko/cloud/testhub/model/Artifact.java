@@ -33,6 +33,18 @@ public class Artifact {
     private String name = "";
 
     @NonNull
+    @Column(name = "coverage", nullable = false)
+    private Float coverage = 0F;
+
+    @NonNull
+    @Column(name = "instructions", nullable = false)
+    private Float instructions = 0F;
+
+    @NonNull
+    @Column(name = "branches", nullable = false)
+    private Float branches = 0F;
+
+    @NonNull
     @Column(name = "type")
     @Enumerated(EnumType.STRING)
     private ArtifactType type = ArtifactType.APPLICATION;

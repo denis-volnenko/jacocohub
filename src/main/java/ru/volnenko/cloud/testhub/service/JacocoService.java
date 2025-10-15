@@ -14,6 +14,7 @@ public interface JacocoService {
     Jacoco create(
             @NonNull String releaseId,
             @NonNull String branchId,
+            @NonNull Float coverage,
             @NonNull Float instructions,
             @NonNull Float branches
     );

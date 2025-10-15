@@ -31,7 +31,7 @@
         <td nowrap="nowrap" align="left"><#if branch??>${branch.name}</#if></td>
         <#assign version = controller.getVersionByReleaseId(result.releaseId) />
         <td nowrap="nowrap" align="right"><#if version??>${version.name}</#if></td>
-        <td align="right">${result.percent}%</td>
+        <td align="right">${result.coverage}%</td>
         <td align="right">${result.branches}%</td>
         <td align="right">${result.instructions}%</td>
     </tr>

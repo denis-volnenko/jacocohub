@@ -1,14 +1,13 @@
 package ru.volnenko.cloud.testhub.service;
 
 import lombok.NonNull;
-import org.apache.tomcat.jni.Library;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import ru.volnenko.cloud.testhub.enumerated.ArtifactType;
 import ru.volnenko.cloud.testhub.model.Artifact;
+import ru.volnenko.cloud.testhub.model.Jacoco;
 
 import java.util.List;
-import java.util.Optional;
 
 @Service
 public interface ArtifactService {
@@ -19,11 +18,25 @@ public interface ArtifactService {
 
     @NonNull
     @Transactional
-    Artifact save(@NonNull String name, @NonNull String groupId, @NonNull ArtifactType artifactType);
+    Artifact save(
+            @NonNull String name,
+            @NonNull String groupId,
+            @NonNull ArtifactType artifactType,
+            @NonNull Float coverage,
+            @NonNull Float instructions,
+            @NonNull Float branches
+    );
 
     @NonNull
     @Transactional
-    Artifact merge(@NonNull String name, @NonNull String groupId, @NonNull ArtifactType artifactType);
+    Artifact merge(
+            @NonNull String name,
+            @NonNull String groupId,
+            @NonNull ArtifactType artifactType,
+            @NonNull Float coverage,
+            @NonNull Float instructions,
+            @NonNull Float branches
+    );
 
     @NonNull
     @Transactional(readOnly = true)

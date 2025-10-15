@@ -30,8 +30,8 @@ public class Jacoco {
     private String branchId;
 
     @NonNull
-    @Column(name = "percent", nullable = false)
-    private Float percent = 0F;
+    @Column(name = "coverage", nullable = false)
+    private Float coverage = 0F;
 
     @NonNull
     @Column(name = "instructions", nullable = false)

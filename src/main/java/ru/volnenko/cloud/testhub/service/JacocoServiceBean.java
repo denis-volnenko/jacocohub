@@ -20,15 +20,15 @@ public class JacocoServiceBean implements JacocoService {
     public Jacoco create(
             @NonNull final String releaseId,
             @NonNull final String branchId,
+            @NonNull final Float coverage,
             @NonNull final Float instructions,
             @NonNull final Float branches
     ) {
         @NonNull final Jacoco jacoco = new Jacoco();
         jacoco.setReleaseId(releaseId);
-        @NonNull final Float percent = (branches + instructions) / 2;
         jacoco.setBranches(branches);
         jacoco.setInstructions(instructions);
-        jacoco.setPercent(percent);
+        jacoco.setCoverage(coverage);
         jacoco.setBranchId(branchId);
         return jacocoRepository.save(jacoco);
     }
