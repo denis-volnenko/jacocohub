@@ -7,12 +7,16 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.servlet.ModelAndView;
 import ru.volnenko.cloud.testhub.service.ArtifactService;
+import ru.volnenko.cloud.testhub.service.JacocoService;
 
 @Controller
 public class ArtifactControllerBean implements ArtifactController {
 
     @Autowired
     private ArtifactService artifactService;
+
+    @Autowired
+    private JacocoService jacocoService;
 
     @NonNull
     @Override
@@ -29,6 +33,8 @@ public class ArtifactControllerBean implements ArtifactController {
     public ModelAndView artifact(@PathVariable("artifactId") @NonNull final String artifactId) {
         @NonNull final ModelAndView modelAndView = new ModelAndView();
         modelAndView.setViewName("artifact");
+        modelAndView.addObject("artifact", artifactService.findById(artifactId).orElse(null));
+        modelAndView.addObject("results",  jacocoService.findAllByArtifactId(artifactId));
         return modelAndView;
     }
 

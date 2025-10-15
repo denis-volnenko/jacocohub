@@ -8,6 +8,7 @@ import ru.volnenko.cloud.testhub.enumerated.ArtifactType;
 import ru.volnenko.cloud.testhub.model.Artifact;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public interface ArtifactService {
@@ -46,4 +47,6 @@ public interface ArtifactService {
     @Transactional(readOnly = true)
     Artifact findByNameAndGroupId(@NonNull String name, @NonNull String groupId);
 
+    @Transactional(readOnly = true)
+    Optional<Artifact> findById(@NonNull String id);
 }

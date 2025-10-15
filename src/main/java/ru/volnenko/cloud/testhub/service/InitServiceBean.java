@@ -30,7 +30,7 @@ public class InitServiceBean implements InitService {
         return JacocoResultDto.create()
                 .group("ru.volnenko.cloud").artifact("testhub-worker").version("1.0.0").application()
                 .parent().group("ru.volnenko.cloud").artifact("testhub-app").version("1.0.0").builder()
-                .branches(1F).instructions(2F)
+                .branches(rand()).instructions(rand())
                 .build();
     }
 
@@ -39,7 +39,7 @@ public class InitServiceBean implements InitService {
         return JacocoResultDto.create()
                 .group("ru.volnenko.cloud").artifact("testhub-api").version("1.0.0").application()
                 .parent().group("ru.volnenko.cloud").artifact("testhub-app").version("1.0.0").builder()
-                .branches(1F).instructions(2F)
+                .branches(rand()).instructions(rand())
                 .build();
     }
 
@@ -48,8 +48,15 @@ public class InitServiceBean implements InitService {
         return JacocoResultDto.create()
                 .group("ru.volnenko.cloud").artifact("testhub-core").version("1.0.0").library()
                 .parent().group("ru.volnenko.cloud").artifact("testhub-app").version("1.0.0").builder()
-                .branches(1F).instructions(2F)
+                .branches(rand()).instructions(rand())
                 .build();
+    }
+
+    private float rand() {
+        int min = 20;
+        int max = 90;
+        int randomInt = min + (int)(Math.random() * ((max - min) + 1));
+        return randomInt;
     }
 
 }

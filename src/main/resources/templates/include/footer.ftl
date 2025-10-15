@@ -1,7 +1,9 @@
 </td>
 </tr>
 <tr>
-    <td align="center" style="padding: 5px;"><a href="mailto:denis@volnenko.ru">denis@volnenko.ru</a></td>
+    <td align="center" style="height: 40px;" valign="top">
+        <a href="/ui/about">О ПРОДУКТЕ</a>
+    </td>
 </tr>
 </table>
 
