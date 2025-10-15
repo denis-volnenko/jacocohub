@@ -2,6 +2,7 @@ package ru.volnenko.cloud.testhub.service;
 
 import lombok.NonNull;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import ru.volnenko.cloud.testhub.model.Release;
@@ -36,6 +37,18 @@ public class ReleaseServiceBean implements ReleaseService {
         release.setArtifactId(artifactId);
         release.setVersionId(versionId);
         return releaseRepository.save(release);
+    }
+
+    @Override
+    @Transactional(readOnly = true)
+    public Release findById(@NonNull final String id) {
+        return releaseRepository.findById(id).orElse(null);
+    }
+
+    @Override
+    @Cacheable(value = "release", key = "id")
+    public Release cacheById(@NonNull final String id) {
+        return findById(id);
     }
 
 }

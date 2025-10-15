@@ -19,4 +19,9 @@ public interface ReleaseService {
     @Transactional
     Release saveByArtifactIdAndVersionId(@NonNull String artifactId, @NonNull String versionId);
 
+    @Transactional(readOnly = true)
+    Release findById(@NonNull String id);
+
+    Release cacheById(@NonNull String id);
+
 }

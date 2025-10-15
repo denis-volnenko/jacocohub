@@ -2,6 +2,7 @@ package ru.volnenko.cloud.testhub.service;
 
 import lombok.NonNull;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import ru.volnenko.cloud.testhub.model.Version;
@@ -49,4 +50,11 @@ public class VersionServiceBean implements VersionService {
     public Version findById(@NonNull final String id) {
         return versionRepository.findById(id).orElse(null);
     }
+
+    @Override
+    @Cacheable(cacheNames = "version", key = "id")
+    public Version cacheById(@NonNull final String id) {
+        return findById(id);
+    }
+
 }

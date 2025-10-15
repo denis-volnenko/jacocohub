@@ -19,8 +19,8 @@
 
     <tr>
         <th>№</th>
-        <th>ДАТА СОЗДАНИЯ</th>
-        <th>ВЕТКА</th>
+        <th align="left">ДАТА СОЗДАНИЯ</th>
+        <th align="left">ВЕТКА</th>
         <th>ВЕРСИЯ</th>
         <th>ПОКРЫТИЕ</th>
         <th>INSTRUCTIONS</th>
@@ -32,8 +32,10 @@
     <tr>
         <td width="30" nowrap="nowrap" align="center"><#if index??>${index?string["00"]}.</#if></td>
         <td width="100%">${result.created}</td>
-        <td width="200" nowrap="nowrap">${result.branchId}</td>
-        <td width="200" nowrap="nowrap">${result.releaseId}</td>
+        <#assign branch = controller.getBranch(result.branchId) />
+        <td nowrap="nowrap" align="left"><#if branch??>${branch.name}</#if></td>
+        <#assign version = controller.getVersionByReleaseId(result.releaseId) />
+        <td nowrap="nowrap" align="right"><#if version??>${version.name}</#if></td>
         <td align="right">${result.percent}%</td>
         <td align="right">${result.branches}%</td>
         <td align="right">${result.instructions}%</td>

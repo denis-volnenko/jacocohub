@@ -25,4 +25,7 @@ public interface VersionService {
 
     @Transactional
     Version findById(@NonNull String id);
+
+    Version cacheById(@NonNull String id);
+
 }

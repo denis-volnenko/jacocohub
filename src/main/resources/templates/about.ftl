@@ -2,9 +2,41 @@
 
 <h1>СПРАВКА</h1>
 
-<h2>О ПРОДУКТЕ</h2>
+<h2>СЕРВЕР</h2>
 
-<h2>О РАЗРАБОТЧИКЕ</h2>
+<table width="100%" cellspacing="0" cellpadding="10" border="1">
+    <tr>
+        <th nowrap="nowrap" align="left">groupId</th>
+        <td width="100%" align="left">ru.volnenko.cloud</td>
+    </tr>
+    <tr>
+        <th nowrap="nowrap" align="left">artifactId</th>
+        <td width="100%" align="left">testhub</td>
+    </tr>
+    <tr>
+        <th nowrap="nowrap" align="left">version</th>
+        <td width="100%" align="left">1.0.0</td>
+    </tr>
+</table>
+
+<h2>ПЛАГИН</h2>
+
+<table width="100%" cellspacing="0" cellpadding="10" border="1">
+    <tr>
+        <th nowrap="nowrap" align="left">groupId</th>
+        <td width="100%" align="left">ru.volnenko.plugin</td>
+    </tr>
+    <tr>
+        <th nowrap="nowrap" align="left">artifactId</th>
+        <td width="100%" align="left">testhub-maven-plugin</td>
+    </tr>
+    <tr>
+        <th nowrap="nowrap" align="left">version</th>
+        <td width="100%" align="left">1.0.0</td>
+    </tr>
+</table>
+
+<h2>РАЗРАБОТЧИК</h2>
 
 <table width="100%" cellspacing="0" cellpadding="10" border="1">
     <tr>
