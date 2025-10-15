@@ -1,12 +1,5 @@
-<html>
-<body>
-
-<a href="/">ГЛАВНАЯ</a>
-<a href="/ui/artifacts">АРТИФАКТЫ</a>
-<a href="/ui/applications">ПРИЛОЖЕНИЯ</a>
-<a href="/ui/libraries">БИБЛИОТЕКИ</a>
+<#include '/include/header.ftl'>
 
 <h1>ГЛАВНАЯ</h1>
 
-</body>
-</html>
+<#include '/include/footer.ftl'>

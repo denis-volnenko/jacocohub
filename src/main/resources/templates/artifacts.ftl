@@ -1,18 +1,9 @@
+<#include '/include/header.ftl'>
 
-
-<html>
-<body>
-
-<a href="/">ГЛАВНАЯ</a>
-<a href="/ui/artifacts">АРТИФАКТЫ</a>
-<a href="/ui/applications">ПРИЛОЖЕНИЯ</a>
-<a href="/ui/libraries">БИБЛИОТЕКИ</a>
-
-<h1>АРТИФАКТЫ</h1>
+<h1>АРТЕФАКТЫ</h1>
 
 <#list artifacts as item>
-    <p>${item.name}</p>
+    <p><a href="/ui/artifact/${item.id}">${item.name}</a></p>
 </#list>
 
-</body>
-</html>
+<#include '/include/footer.ftl'>
