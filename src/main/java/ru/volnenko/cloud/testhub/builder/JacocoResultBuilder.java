@@ -2,6 +2,7 @@ package ru.volnenko.cloud.testhub.builder;
 
 import lombok.NonNull;
 import ru.volnenko.cloud.testhub.dto.JacocoResultDto;
+import ru.volnenko.cloud.testhub.enumerated.ArtifactType;
 
 public final class JacocoResultBuilder {
 
@@ -57,6 +58,24 @@ public final class JacocoResultBuilder {
     @NonNull
     public JacocoResultParentBuilder parent() {
         return parentBuilder;
+    }
+
+    @NonNull
+    public JacocoResultBuilder application() {
+        jacocoResultDto.setType(ArtifactType.APPLICATION.toString());
+        return this;
+    }
+
+    @NonNull
+    public JacocoResultBuilder library() {
+        jacocoResultDto.setType(ArtifactType.LIBRARY.toString());
+        return this;
+    }
+
+    @NonNull
+    public JacocoResultBuilder manifest() {
+        jacocoResultDto.setType(ArtifactType.MANIFEST.toString());
+        return this;
     }
 
     @NonNull

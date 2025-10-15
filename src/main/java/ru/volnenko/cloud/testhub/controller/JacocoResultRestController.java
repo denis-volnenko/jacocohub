@@ -7,7 +7,6 @@ import org.springframework.web.bind.annotation.RestController;
 import ru.volnenko.cloud.testhub.dto.JacocoResultDto;
 import ru.volnenko.cloud.testhub.dto.ResultDto;
 
-@RestController
 @RequestMapping("/api/result/jacoco")
 public interface JacocoResultRestController {
 

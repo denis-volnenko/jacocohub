@@ -6,7 +6,7 @@
 <a href="/ui/applications">ПРИЛОЖЕНИЯ</a>
 <a href="/ui/libraries">БИБЛИОТЕКИ</a>
 
-<h1>ГЛАВНАЯ</h1>
+<h1>APPLICATIONS</h1>
 
 </body>
 </html>
