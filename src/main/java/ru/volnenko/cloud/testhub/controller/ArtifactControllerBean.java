@@ -29,7 +29,7 @@ public class ArtifactControllerBean implements ArtifactController {
     public ModelAndView artifacts() {
         @NonNull final ModelAndView modelAndView = new ModelAndView();
         modelAndView.setViewName("artifacts");
-        modelAndView.addObject("artifacts", artifactService.findAll());
+        modelAndView.addObject("artifacts", artifactService.findAllArtifact());
         return modelAndView;
     }
 
@@ -43,8 +43,8 @@ public class ArtifactControllerBean implements ArtifactController {
         return modelAndView;
     }
 
-    public Branch getBranch(@NonNull String id) {
-        return branchService.findById(id);
+    public Branch getBranch(@NonNull final String id) {
+        return branchService.cacheById(id);
     }
 
 }

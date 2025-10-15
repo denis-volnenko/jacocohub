@@ -34,6 +34,7 @@ public class Artifact {
 
     @NonNull
     @Column(name = "type")
+    @Enumerated(EnumType.STRING)
     private ArtifactType type = ArtifactType.APPLICATION;
 
     @CreationTimestamp

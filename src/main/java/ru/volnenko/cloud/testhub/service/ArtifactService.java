@@ -39,7 +39,7 @@ public interface ArtifactService {
 
     @NonNull
     @Transactional(readOnly = true)
-    List<Library> findAllLibrary();
+    List<Artifact> findAllLibrary();
 
     @Transactional(readOnly = true)
     long count();

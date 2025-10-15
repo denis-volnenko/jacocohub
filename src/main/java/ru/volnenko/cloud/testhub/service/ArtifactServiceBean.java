@@ -20,12 +20,6 @@ public class ArtifactServiceBean implements ArtifactService {
 
     @NonNull
     @Override
-    public List<Artifact> findAllArtifact() {
-        return Collections.emptyList();
-    }
-
-    @NonNull
-    @Override
     @Transactional(readOnly = true)
     public List<Artifact> findAll() {
         return artifactRepository.findAll();
@@ -34,15 +28,22 @@ public class ArtifactServiceBean implements ArtifactService {
     @NonNull
     @Override
     @Transactional(readOnly = true)
-    public List<Artifact> findAllApplication() {
-        return Collections.emptyList();
+    public List<Artifact> findAllArtifact() {
+        return artifactRepository.findAllArtifact();
     }
 
     @NonNull
     @Override
     @Transactional(readOnly = true)
-    public List<Library> findAllLibrary() {
-        return Collections.emptyList();
+    public List<Artifact> findAllApplication() {
+        return artifactRepository.findAllApplication();
+    }
+
+    @NonNull
+    @Override
+    @Transactional(readOnly = true)
+    public List<Artifact> findAllLibrary() {
+        return artifactRepository.findAllLibrary();
     }
 
     @Override
