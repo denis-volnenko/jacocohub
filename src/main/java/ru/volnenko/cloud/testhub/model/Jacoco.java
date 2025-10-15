@@ -26,6 +26,12 @@ public class Jacoco {
     @Column(name = "release_id", nullable = false)
     private String releaseId;
 
+    @Column(name = "artifact_id", nullable = false)
+    private String artifactId;
+
+    @Column(name = "version_id", nullable = false)
+    private String versionId;
+
     @Column(name = "branch_id")
     private String branchId;
 

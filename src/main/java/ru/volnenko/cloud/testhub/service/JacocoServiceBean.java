@@ -19,6 +19,8 @@ public class JacocoServiceBean implements JacocoService {
     @Override
     public Jacoco create(
             @NonNull final String releaseId,
+            @NonNull String artifactId,
+            @NonNull String versionId,
             @NonNull final String branchId,
             @NonNull final Float coverage,
             @NonNull final Float instructions,
@@ -26,6 +28,8 @@ public class JacocoServiceBean implements JacocoService {
     ) {
         @NonNull final Jacoco jacoco = new Jacoco();
         jacoco.setReleaseId(releaseId);
+        jacoco.setArtifactId(artifactId);
+        jacoco.setVersionId(versionId);
         jacoco.setBranches(branches);
         jacoco.setInstructions(instructions);
         jacoco.setCoverage(coverage);

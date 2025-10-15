@@ -13,6 +13,8 @@ public interface JacocoService {
     @NonNull
     Jacoco create(
             @NonNull String releaseId,
+            @NonNull String artifactId,
+            @NonNull String versionId,
             @NonNull String branchId,
             @NonNull Float coverage,
             @NonNull Float instructions,

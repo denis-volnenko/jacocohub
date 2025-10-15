@@ -29,7 +29,7 @@
         <td width="100%">${result.created}</td>
         <#assign branch = controller.getBranch(result.branchId) />
         <td nowrap="nowrap" align="left"><#if branch??>${branch.name}</#if></td>
-        <#assign version = controller.getVersionByReleaseId(result.releaseId) />
+        <#assign version = controller.getVersion(result.versionId) />
         <td nowrap="nowrap" align="right"><#if version??>${version.name}</#if></td>
         <td align="right">${result.coverage}%</td>
         <td align="right">${result.branches}%</td>

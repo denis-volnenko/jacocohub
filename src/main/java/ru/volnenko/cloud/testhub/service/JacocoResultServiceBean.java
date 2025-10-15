@@ -63,23 +63,27 @@ public class JacocoResultServiceBean implements JacocoResultService {
         @NonNull final ArtifactType artifactType = ArtifactType.valueOf(result.getType());
         @NonNull final Artifact artifact = artifactService.merge(artifactName, group.getId(), artifactType, coverage, instructions, branches);
         @NonNull final Release release = releaseService.mergeByArtifactIdAndVersionId(artifact.getId(), version.getId());
-        @NonNull Jacoco jacoco = jacocoService.create(release.getId(), branch.getId(), coverage, instructions, branches);
+        @NonNull Jacoco jacoco = jacocoService.create(release.getId(), artifact.getId(), version.getId(), branch.getId(), coverage, instructions, branches);
 
-        final Artifact parent = parent(result);
+        final Parent parent = parent(result);
         if (parent != null) {
-            final Artifact child = child(artifact);
+            @NonNull final Child child = child(artifact);
+            pathService.merge(parent, child);
         }
 
         return jacoco;
     }
 
-    @NonNull
-    private Artifact child(@NonNull final Artifact artifact) {
-        childService.merge(artifact);
-        return artifact;
+    public void calc(@NonNull final Parent parent) {
+        @NonNull final String parentId = parent.getId();
     }
 
-    private Artifact parent(@NonNull final JacocoResultDto result) {
+    @NonNull
+    private Child child(@NonNull final Artifact artifact) {
+        return childService.merge(artifact);
+    }
+
+    private Parent parent(@NonNull final JacocoResultDto result) {
         @NonNull final String branchName = result.getBranch();
         if (branchName.isEmpty()) return null;
         @NonNull final Branch branch = branchService.mergeByName(branchName);
@@ -99,9 +103,7 @@ public class JacocoResultServiceBean implements JacocoResultService {
         @NonNull final Artifact artifact = artifactService.merge(artifactName, group.getId(), artifactType);
         @NonNull final Release release = releaseService.mergeByArtifactIdAndVersionId(artifact.getId(), version.getId());
 
-        parentService.merge(artifactName);
-
-        return artifact;
+        return parentService.merge(artifact.getId());
     }
 
 }
