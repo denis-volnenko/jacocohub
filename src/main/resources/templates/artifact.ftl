@@ -1,12 +1,7 @@
 <#include '/include/header.ftl'>
 
 <h1>
-    <#if artifact.type == 'APPLICATION'>
-        ПРИЛОЖЕНИЕ "${artifact.name}"
-    </#if>
-    <#if artifact.type == 'LIBRARY'>
-        БИБЛИОТЕКА "${artifact.name}"
-    </#if>
+    ${artifact.type.displayName} "${artifact.name}"
 </h1>
 
 <h2>ГРАФИК ПОКРЫТИЯ ТЕСТАМИ</h2>

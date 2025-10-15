@@ -101,7 +101,7 @@
             <table width="100%" border="0" cellspacing="0" cellpadding="0">
                 <tr>
                     <td nowrap="nowrap" style="color: white;">
-                        <a href="/" style="color: white; font-size: 25px; font-family: 'RobotoRegular'; text-decoration: none; color: silver;">TESTHUB</a>
+                        <a href="/" style="color: white; font-size: 25px; font-family: 'RobotoRegular'; text-decoration: none; color: silver;">JACOCOHUB</a>
                     </td>
                     <td width="100%" align="right" style="color: white;">
                         <a style="color: white; margin-right: 10px; border-bottom: 1px dashed white;" href="/ui/artifacts">АРТЕФАКТЫ</a>

@@ -28,8 +28,8 @@ public class InitServiceBean implements InitService {
     @NonNull
     private JacocoResultDto worker() {
         return JacocoResultDto.create()
-                .group("ru.volnenko.cloud").artifact("testhub-worker").version("1.0.0").application()
-                .parent().group("ru.volnenko.cloud").artifact("testhub-app").version("1.0.0").builder()
+                .group("ru.volnenko.cloud").artifact("jacocohub-worker").version("1.0.0").application()
+                .parent().group("ru.volnenko.cloud").artifact("jacocohub-app").version("1.0.0").builder()
                 .branches(rand()).instructions(rand())
                 .build();
     }
@@ -37,8 +37,8 @@ public class InitServiceBean implements InitService {
     @NonNull
     private JacocoResultDto api() {
         return JacocoResultDto.create()
-                .group("ru.volnenko.cloud").artifact("testhub-api").version("1.0.0").application()
-                .parent().group("ru.volnenko.cloud").artifact("testhub-app").version("1.0.0").builder()
+                .group("ru.volnenko.cloud").artifact("jacocohub-api").version("1.0.0").application()
+                .parent().group("ru.volnenko.cloud").artifact("jacocohub-app").version("1.0.0").builder()
                 .branches(rand()).instructions(rand())
                 .build();
     }
@@ -46,8 +46,8 @@ public class InitServiceBean implements InitService {
     @NonNull
     private JacocoResultDto core() {
         return JacocoResultDto.create()
-                .group("ru.volnenko.cloud").artifact("testhub-core").version("1.0.0").library()
-                .parent().group("ru.volnenko.cloud").artifact("testhub-app").version("1.0.0").builder()
+                .group("ru.volnenko.cloud").artifact("jacocohub-core").version("1.0.0").library()
+                .parent().group("ru.volnenko.cloud").artifact("jacocohub-app").version("1.0.0").builder()
                 .branches(rand()).instructions(rand())
                 .build();
     }

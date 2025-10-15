@@ -11,7 +11,7 @@
 	</parent>
 
 	<groupId>ru.volnenko.cloud</groupId>
-	<artifactId>testhub</artifactId>
+	<artifactId>jacocohub</artifactId>
 	<version>1.0.0</version>
 	<name>testhub</name>
 	<description>TestHub</description>

@@ -11,7 +11,7 @@
     </tr>
     <tr>
         <th nowrap="nowrap" align="left">artifactId</th>
-        <td width="100%" align="left">testhub</td>
+        <td width="100%" align="left">jacocohub</td>
     </tr>
     <tr>
         <th nowrap="nowrap" align="left">version</th>
@@ -28,7 +28,7 @@
     </tr>
     <tr>
         <th nowrap="nowrap" align="left">artifactId</th>
-        <td width="100%" align="left">testhub-maven-plugin</td>
+        <td width="100%" align="left">jacocohub-maven-plugin</td>
     </tr>
     <tr>
         <th nowrap="nowrap" align="left">version</th>

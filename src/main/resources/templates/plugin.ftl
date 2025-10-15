@@ -39,7 +39,7 @@
             &lt;/plugin&gt;
             &lt;plugin&gt;
                 &lt;groupId&gt;ru.volnenko.plugin&lt;/groupId&gt;
-                &lt;artifactId&gt;testhub-maven-plugin&lt;/artifactId&gt;
+                &lt;artifactId&gt;jacocohub-maven-plugin&lt;/artifactId&gt;
                 &lt;version&gt;1.0.0&lt;/version&gt;
                 &lt;configuration&gt;
                     &lt;testhub&gt;http://localhost:8080&lt;/testhub&gt;
@@ -97,7 +97,7 @@
             &lt;/plugin&gt;
             &lt;plugin&gt;
                 &lt;groupId&gt;ru.volnenko.plugin&lt;/groupId&gt;
-                &lt;artifactId&gt;testhub-maven-plugin&lt;/artifactId&gt;
+                &lt;artifactId&gt;jacocohub-maven-plugin&lt;/artifactId&gt;
                 &lt;version&gt;1.0.0&lt;/version&gt;
                 &lt;configuration&gt;
                     &lt;testhub&gt;http://localhost:8080&lt;/testhub&gt;
