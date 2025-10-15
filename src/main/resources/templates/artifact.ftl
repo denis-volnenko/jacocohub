@@ -29,7 +29,7 @@
 <#assign index = 1>
 <#list results as result>
     <tr>
-        <td width="40" nowrap="nowrap" align="center"><#if index??>${index?string["00"]}.</#if></td>
+        <td width="30" nowrap="nowrap" align="center"><#if index??>${index?string["00"]}.</#if></td>
         <td width="100%">${result.created}</td>
         <td width="200" nowrap="nowrap">${result.branchId}</td>
         <td align="right">${result.percent}%</td>

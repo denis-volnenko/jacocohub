@@ -13,22 +13,16 @@ public interface VersionService {
 
     @NonNull
     @Transactional
-    default Version mergeByName(@NonNull String name) {
-        final Version version = findByName(name);
-        if (version != null) return version;
-        return saveByName(name);
-    }
-
-    @NonNull
-    @Transactional
     Version save(@NonNull Version version);
 
     @NonNull
     @Transactional
-    default Version saveByName(@NonNull String name) {
-        @NonNull final Version version = new Version();
-        version.setName(name);
-        return save(version);
-    }
+    Version saveByName(@NonNull String name);
 
+    @NonNull
+    @Transactional
+    Version mergeByName(@NonNull String name);
+
+    @Transactional
+    Version findById(@NonNull String id);
 }

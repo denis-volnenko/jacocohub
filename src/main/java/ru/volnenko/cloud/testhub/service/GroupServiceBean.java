@@ -2,12 +2,14 @@ package ru.volnenko.cloud.testhub.service;
 
 import lombok.NonNull;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import ru.volnenko.cloud.testhub.model.Group;
 import ru.volnenko.cloud.testhub.repository.GroupRepository;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class GroupServiceBean implements GroupService {
@@ -38,6 +40,17 @@ public class GroupServiceBean implements GroupService {
         @NonNull final Group group = new Group();
         group.setName(name);
         return save(group);
+    }
+
+    @Override
+    @Cacheable(value = "group", key = "id")
+    public Group cacheById(@NonNull final String id) {
+        return findById(id);
+    }
+
+    @Override
+    public Group findById(@NonNull final String id) {
+        return groupRepository.findById(id).orElse(null);
     }
 
     @NonNull

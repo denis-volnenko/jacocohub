@@ -13,13 +13,14 @@ public class IndexControllerBean implements IndexController {
     @Autowired
     private JacocoService jacocoService;
 
+    @Autowired
+    private ArtifactController artifactController;
+
     @Override
     @NonNull
     @GetMapping("/")
     public ModelAndView index() {
-        @NonNull final ModelAndView result = new ModelAndView();
-        result.setViewName("index");
-        return result;
+        return artifactController.artifacts();
     }
 
 }

@@ -2,8 +2,19 @@
 
 <h1>АРТЕФАКТЫ</h1>
 
-<#list artifacts as item>
-    <p><a href="/ui/artifact/${item.id}">${item.name}</a></p>
-</#list>
+<table width="100%" cellpadding="10" cellspacing="0" border="1">
+    <tr>
+        <th>№</th>
+        <th align="left">НАЗВАНИЕ</th>
+    </tr>
+    <#assign index = 1>
+    <#list artifacts as item>
+        <tr>
+            <td width="30" nowrap="nowrap" align="center"><#if index??>${index?string["00"]}.</#if></td>
+            <td width="100%"><a href="/ui/artifact/${item.id}">${item.name}</a></td>
+        </tr>
+        <#assign index = index + 1>
+    </#list>
+</table>
 
 <#include '/include/footer.ftl'>

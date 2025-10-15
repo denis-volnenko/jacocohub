@@ -23,7 +23,9 @@ public interface BranchService {
     Branch saveByName(@NonNull String name);
 
     @Transactional(readOnly = true)
-    Optional<Branch> findById(@NonNull String id);
+    Branch findById(@NonNull String id);
+
+    Branch cacheById(@NonNull String id);
 
     @NonNull List<Branch> findAll();
 

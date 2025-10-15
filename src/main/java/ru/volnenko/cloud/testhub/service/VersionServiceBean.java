@@ -19,11 +19,34 @@ public class VersionServiceBean implements VersionService {
         return versionRepository.findByName(name);
     }
 
-    @Override
     @NonNull
+    @Override
     @Transactional
     public Version save(@NonNull final Version version) {
         return versionRepository.save(version);
     }
 
+    @NonNull
+    @Override
+    @Transactional
+    public Version saveByName(@NonNull String name) {
+        @NonNull final Version version = new Version();
+        version.setName(name);
+        return save(version);
+    }
+
+    @NonNull
+    @Override
+    @Transactional
+    public Version mergeByName(@NonNull String name) {
+        final Version version = findByName(name);
+        if (version != null) return version;
+        return saveByName(name);
+    }
+
+    @Override
+    @Transactional
+    public Version findById(@NonNull final String id) {
+        return versionRepository.findById(id).orElse(null);
+    }
 }

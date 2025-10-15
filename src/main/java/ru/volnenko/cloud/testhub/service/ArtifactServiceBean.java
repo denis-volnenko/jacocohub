@@ -11,7 +11,6 @@ import ru.volnenko.cloud.testhub.repository.ArtifactRepository;
 
 import java.util.Collections;
 import java.util.List;
-import java.util.Optional;
 
 @Service
 public class ArtifactServiceBean implements ArtifactService {
@@ -90,8 +89,8 @@ public class ArtifactServiceBean implements ArtifactService {
 
     @Override
     @Transactional(readOnly = true)
-    public Optional<Artifact> findById(@NonNull final String id) {
-        return artifactRepository.findById(id);
+    public Artifact findById(@NonNull final String id) {
+        return artifactRepository.findById(id).orElse(null);
     }
 
 }

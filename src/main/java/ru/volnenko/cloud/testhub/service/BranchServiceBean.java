@@ -2,6 +2,7 @@ package ru.volnenko.cloud.testhub.service;
 
 import lombok.NonNull;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import ru.volnenko.cloud.testhub.model.Branch;
@@ -45,8 +46,14 @@ public class BranchServiceBean implements BranchService {
 
     @Override
     @Transactional(readOnly = true)
-    public Optional<Branch> findById(@NonNull final String id) {
-        return branchRepository.findById(id);
+    public Branch findById(@NonNull final String id) {
+        return branchRepository.findById(id).orElse(null);
+    }
+
+    @Override
+    @Cacheable(value = "branch", key = "id")
+    public Branch cacheById(@NonNull String id) {
+        return findById(id);
     }
 
     @Override

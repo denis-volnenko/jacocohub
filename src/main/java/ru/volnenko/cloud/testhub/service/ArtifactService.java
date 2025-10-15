@@ -48,5 +48,5 @@ public interface ArtifactService {
     Artifact findByNameAndGroupId(@NonNull String name, @NonNull String groupId);
 
     @Transactional(readOnly = true)
-    Optional<Artifact> findById(@NonNull String id);
+    Artifact findById(@NonNull String id);
 }
