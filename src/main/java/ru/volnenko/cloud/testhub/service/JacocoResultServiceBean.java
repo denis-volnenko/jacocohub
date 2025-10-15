@@ -33,6 +33,15 @@ public class JacocoResultServiceBean implements JacocoResultService {
     @Autowired
     private BranchService branchService;
 
+    @Autowired
+    private PathService pathService;
+
+    @Autowired
+    private ParentService parentService;
+
+    @Autowired
+    private ChildService childService;
+
     @Override
     @NonNull
     @Transactional
@@ -54,7 +63,45 @@ public class JacocoResultServiceBean implements JacocoResultService {
         @NonNull final ArtifactType artifactType = ArtifactType.valueOf(result.getType());
         @NonNull final Artifact artifact = artifactService.merge(artifactName, group.getId(), artifactType, coverage, instructions, branches);
         @NonNull final Release release = releaseService.mergeByArtifactIdAndVersionId(artifact.getId(), version.getId());
-        return jacocoService.create(release.getId(), branch.getId(), coverage, instructions, branches);
+        @NonNull Jacoco jacoco = jacocoService.create(release.getId(), branch.getId(), coverage, instructions, branches);
+
+        final Artifact parent = parent(result);
+        if (parent != null) {
+            final Artifact child = child(artifact);
+        }
+
+        return jacoco;
+    }
+
+    @NonNull
+    private Artifact child(@NonNull final Artifact artifact) {
+        childService.merge(artifact);
+        return artifact;
+    }
+
+    private Artifact parent(@NonNull final JacocoResultDto result) {
+        @NonNull final String branchName = result.getBranch();
+        if (branchName.isEmpty()) return null;
+        @NonNull final Branch branch = branchService.mergeByName(branchName);
+
+        @NonNull final String groupName = result.getParentGroup();
+        if (groupName.isEmpty()) return null;
+        @NonNull final Group group = groupService.mergeByName(groupName);
+
+        @NonNull final String versionName = result.getParentVersion();
+        if (versionName.isEmpty()) return null;
+        @NonNull final Version version = versionService.mergeByName(versionName);
+
+        @NonNull final String artifactName = result.getParentArtifact();
+        if (artifactName.isEmpty()) return null;
+
+        @NonNull final ArtifactType artifactType = ArtifactType.valueOf(result.getParentType());
+        @NonNull final Artifact artifact = artifactService.merge(artifactName, group.getId(), artifactType);
+        @NonNull final Release release = releaseService.mergeByArtifactIdAndVersionId(artifact.getId(), version.getId());
+
+        parentService.merge(artifactName);
+
+        return artifact;
     }
 
 }

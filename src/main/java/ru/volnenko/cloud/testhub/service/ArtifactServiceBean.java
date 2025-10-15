@@ -69,6 +69,32 @@ public class ArtifactServiceBean implements ArtifactService {
 
     @NonNull
     @Override
+    public Artifact save(
+            @NonNull final String name,
+            @NonNull final String groupId,
+            @NonNull final ArtifactType artifactType
+    ) {
+        @NonNull final Artifact artifact = new Artifact();
+        artifact.setGroupId(groupId);
+        artifact.setName(name);
+        artifact.setType(artifactType);
+        return save(artifact);
+    }
+
+    @NonNull
+    @Override
+    public Artifact merge(
+            @NonNull final String name,
+            @NonNull final String groupId,
+            @NonNull final ArtifactType artifactType
+    ) {
+        final Artifact artifact = findByNameAndGroupId(name, groupId);
+        if (artifact != null) return artifact;
+        return save(name, groupId, artifactType);
+    }
+
+    @NonNull
+    @Override
     @Transactional
     public Artifact merge(
             @NonNull final String name,
@@ -83,6 +109,7 @@ public class ArtifactServiceBean implements ArtifactService {
         return save(name, groupId, artifactType, coverage, instructions, branches);
     }
 
+    @NonNull
     @Override
     @Transactional
     public Artifact save(

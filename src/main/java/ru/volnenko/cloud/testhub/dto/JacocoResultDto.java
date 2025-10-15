@@ -25,6 +25,9 @@ public final class JacocoResultDto {
     private String parentVersion = "";
 
     @NonNull
+    private String parentType = ArtifactType.APPLICATION.toString();
+
+    @NonNull
     private String group = "";
 
     @NonNull

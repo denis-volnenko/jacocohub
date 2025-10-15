@@ -21,6 +21,22 @@ public interface ArtifactService {
     Artifact save(
             @NonNull String name,
             @NonNull String groupId,
+            @NonNull ArtifactType artifactType
+    );
+
+    @NonNull
+    @Transactional
+    Artifact merge(
+            @NonNull String name,
+            @NonNull String groupId,
+            @NonNull ArtifactType artifactType
+    );
+
+    @NonNull
+    @Transactional
+    Artifact save(
+            @NonNull String name,
+            @NonNull String groupId,
             @NonNull ArtifactType artifactType,
             @NonNull Float coverage,
             @NonNull Float instructions,

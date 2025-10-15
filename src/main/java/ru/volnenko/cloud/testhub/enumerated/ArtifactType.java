@@ -4,7 +4,6 @@ import lombok.NonNull;
 
 public enum ArtifactType {
 
-    MANIFEST("МАНИФЕСТ"),
     APPLICATION("ПРИЛОЖЕНИЕ"),
     LIBRARY("БИБЛИОТЕКА");
 

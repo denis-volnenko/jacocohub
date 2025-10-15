@@ -73,12 +73,6 @@ public final class JacocoResultBuilder {
     }
 
     @NonNull
-    public JacocoResultBuilder manifest() {
-        jacocoResultDto.setType(ArtifactType.MANIFEST.toString());
-        return this;
-    }
-
-    @NonNull
     public JacocoResultBuilder artifact(@NonNull final String artifact) {
         jacocoResultDto.setArtifact(artifact);
         return this;
