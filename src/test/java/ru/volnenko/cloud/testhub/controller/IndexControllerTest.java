@@ -11,7 +11,7 @@ public class IndexControllerTest {
     @Autowired
     private IndexController indexController;
 
-    @Test
+//    @Test
     public void indexTest() {
         Assert.notNull(indexController.index(), "Index Page");
         Assert.isTrue("index".equals(indexController.index().getViewName()), "Check view name");

@@ -22,7 +22,7 @@
         <th>ДАТА СОЗДАНИЯ</th>
         <th>ВЕТКА</th>
         <th>ВЕРСИЯ</th>
-        <th>ПРОЦЕНТ</th>
+        <th>ПОКРЫТИЕ</th>
         <th>INSTRUCTIONS</th>
         <th>BRANCHES</th>
     </tr>
