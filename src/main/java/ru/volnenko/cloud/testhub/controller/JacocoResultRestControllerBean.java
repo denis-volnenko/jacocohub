@@ -17,11 +17,6 @@ public class JacocoResultRestControllerBean implements JacocoResultRestControlle
     @Autowired
     private JacocoResultServiceBean jacocoResultService;
 
-    @GetMapping(value = "/publish", produces = "application/json")
-    public ResultDto get() {
-        return new ResultDto();
-    }
-
     @Operation(summary = "Публикация результатов Jacoco", description = "Публикация результатов Jacoco")
     @ApiResponse(responseCode = "200", description = "Успешное выполнение")
     @ApiResponse(responseCode = "500", description = "Выполнено с ошибкой")
