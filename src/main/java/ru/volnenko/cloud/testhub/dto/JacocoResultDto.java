@@ -28,7 +28,7 @@ public final class JacocoResultDto {
     private String parentType = ArtifactType.APPLICATION.toString();
 
     @NonNull
-    private String group = "";
+    private String groupId = "";
 
     @NonNull
     private String type = ArtifactType.APPLICATION.toString();
@@ -37,7 +37,7 @@ public final class JacocoResultDto {
     private String branch = "master";
 
     @NonNull
-    private String artifact = "";
+    private String artifactId = "";
 
     @NonNull
     private String version = "";

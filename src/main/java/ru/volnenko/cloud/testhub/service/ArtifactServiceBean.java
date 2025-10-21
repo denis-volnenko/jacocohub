@@ -127,9 +127,7 @@ public class ArtifactServiceBean implements ArtifactService {
         artifact.setGroupId(groupId);
         artifact.setName(name);
         artifact.setType(artifactType);
-//        artifact.setCoverage(coverage);
-//        artifact.setInstructions(instructions);
-//        artifact.setBranches(branches);
+        artifact.setCoverage(valueDto.getCoverage());
         return save(artifact);
     }
 

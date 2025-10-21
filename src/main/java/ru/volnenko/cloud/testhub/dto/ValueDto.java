@@ -13,32 +13,38 @@ public class ValueDto {
         instructionMissed = result.getInstructionMissed();
         instructionCovered = result.getInstructionCovered();
         instructionTotal = instructionMissed + instructionCovered;
-        instructionPercent = instructionCovered / instructionTotal * 100;
+        if (instructionTotal == 0) instructionPercent = 0;
+        else instructionPercent = instructionCovered / instructionTotal * 100;
 
         branchMissed = result.getBranchMissed();
         branchCovered = result.getBranchCovered();
         branchTotal = branchMissed + branchCovered;
-        branchPercent = branchCovered / branchTotal * 100;
+        if (branchTotal == 0) branchPercent = 0;
+        else branchPercent = branchCovered / branchTotal * 100;
 
         lineMissed = result.getLineMissed();
         lineCovered = result.getLineCovered();
         lineTotal = lineMissed + lineCovered;
-        linePercent = lineCovered / lineTotal * 100;
+        if (lineTotal == 0) linePercent = 0;
+        else linePercent = lineCovered / lineTotal * 100;
 
         complexityCovered = result.getComplexityCovered();
         complexityMissed = result.getComplexityMissed();
         complexityTotal = complexityMissed + complexityCovered;
-        complexityPercent = complexityCovered / complexityTotal * 100;
+        if (complexityTotal == 0) complexityPercent = 0;
+        else complexityPercent = complexityCovered / complexityTotal * 100;
 
         methodMissed = result.getMethodMissed();
         methodCovered = result.getMethodCovered();
         methodTotal = methodMissed + methodCovered;
-        methodPercent = methodCovered / methodTotal * 100;
+        if (methodTotal == 0) methodPercent = 0;
+        else methodPercent = methodCovered / methodTotal * 100;
 
         classMissed = result.getClassMissed();
         classCovered = result.getClassCovered();
         classTotal = classMissed + classCovered;
-        classPercent = classCovered / classTotal * 100;
+        if (classTotal == 0) classPercent = 0;
+        else classPercent = classCovered / classTotal * 100;
 
         coverage = (instructionPercent + branchPercent) / 2;
     }

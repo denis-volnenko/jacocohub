@@ -18,8 +18,6 @@
         <th align="left">ВЕТКА</th>
         <th>ВЕРСИЯ</th>
         <th>ПОКРЫТИЕ</th>
-        <th>INSTRUCTIONS</th>
-        <th>BRANCHES</th>
     </tr>
 
 <#assign index = 1>
@@ -32,8 +30,6 @@
         <#assign version = controller.getVersion(result.versionId) />
         <td nowrap="nowrap" align="right"><#if version??>${version.name}</#if></td>
         <td align="right">${result.coverage}%</td>
-        <td align="right">${result.branches}%</td>
-        <td align="right">${result.instructions}%</td>
     </tr>
     <#assign index = index + 1>
 </#list>

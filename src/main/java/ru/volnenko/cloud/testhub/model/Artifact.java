@@ -34,7 +34,7 @@ public class Artifact {
 
     @NonNull
     @Column(name = "coverage", nullable = false)
-    private Float coverage = 0F;
+    private double coverage = 0;
 
     @NonNull
     @Column(name = "type")

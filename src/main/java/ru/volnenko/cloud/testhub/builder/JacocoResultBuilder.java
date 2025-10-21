@@ -74,13 +74,13 @@ public final class JacocoResultBuilder {
 
     @NonNull
     public JacocoResultBuilder artifact(@NonNull final String artifact) {
-        jacocoResultDto.setArtifact(artifact);
+        jacocoResultDto.setArtifactId(artifact);
         return this;
     }
 
     @NonNull
     public JacocoResultBuilder group(@NonNull final String group) {
-        jacocoResultDto.setGroup(group);
+        jacocoResultDto.setGroupId(group);
         return this;
     }
 
@@ -93,18 +93,6 @@ public final class JacocoResultBuilder {
     @NonNull
     public JacocoResultBuilder branch(@NonNull final String branch) {
         jacocoResultDto.setBranch(branch);
-        return this;
-    }
-
-    @NonNull
-    public JacocoResultBuilder branches(@NonNull final Float branches) {
-        jacocoResultDto.setBranchesPercent(branches);
-        return this;
-    }
-
-    @NonNull
-    public JacocoResultBuilder instructions(@NonNull final Float instructions) {
-        jacocoResultDto.setInstructionsPercent(instructions);
         return this;
     }
 

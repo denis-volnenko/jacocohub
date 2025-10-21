@@ -28,6 +28,39 @@ public class JacocoServiceBean implements JacocoService {
         jacoco.setArtifactId(artifactId);
         jacoco.setVersionId(versionId);
         jacoco.setBranchId(branchId);
+
+        jacoco.setInstructionMissed(valueDto.getInstructionMissed());
+        jacoco.setInstructionCovered(valueDto.getInstructionCovered());
+        jacoco.setInstructionTotal(valueDto.getInstructionTotal());
+        jacoco.setInstructionPercent(valueDto.getInstructionPercent());
+
+        jacoco.setBranchMissed(valueDto.getBranchMissed());
+        jacoco.setBranchCovered(valueDto.getBranchCovered());
+        jacoco.setBranchTotal(valueDto.getBranchTotal());
+        jacoco.setBranchPercent(valueDto.getBranchPercent());
+
+        jacoco.setLineMissed(valueDto.getLineMissed());
+        jacoco.setLineCovered(valueDto.getLineCovered());
+        jacoco.setLineTotal(valueDto.getLineTotal());
+        jacoco.setLinePercent(valueDto.getLinePercent());
+
+        jacoco.setClassCovered(valueDto.getClassCovered());
+        jacoco.setClassMissed(valueDto.getClassMissed());
+        jacoco.setClassTotal(valueDto.getClassTotal());
+        jacoco.setClassPercent(valueDto.getClassPercent());
+
+        jacoco.setMethodMissed(valueDto.getMethodMissed());
+        jacoco.setMethodCovered(valueDto.getMethodCovered());
+        jacoco.setMethodTotal(valueDto.getMethodTotal());
+        jacoco.setMethodPercent(valueDto.getMethodPercent());
+
+        jacoco.setClassMissed(valueDto.getClassMissed());
+        jacoco.setClassCovered(valueDto.getClassCovered());
+        jacoco.setClassTotal(valueDto.getClassTotal());
+        jacoco.setClassPercent(valueDto.getClassPercent());
+
+        jacoco.setCoverage(valueDto.getCoverage());
+
         return jacocoRepository.save(jacoco);
     }
 

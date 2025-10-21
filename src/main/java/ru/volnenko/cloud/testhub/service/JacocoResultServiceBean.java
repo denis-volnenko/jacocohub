@@ -69,20 +69,17 @@ public class JacocoResultServiceBean implements JacocoResultService {
     @Transactional(propagation = Propagation.REQUIRES_NEW)
     public Data process(@NonNull final JacocoResultDto result) {
         ValueDto valueDto = new ValueDto(result);
-//        @NonNull final Float branches = result.getBranchesPercent();
-//        @NonNull final Float instructions = result.getInstructionsPercent();
-//        @NonNull final Float coverage = (branches + instructions) / 2;
 
         @NonNull final String branchName = result.getBranch();
         @NonNull final Branch branch = branchService.mergeByName(branchName);
         if (branchName.isEmpty()) throw new BranchEmptyException();
-        @NonNull final String groupName = result.getGroup();
+        @NonNull final String groupName = result.getGroupId();
         if (groupName.isEmpty()) throw new GroupEmptyException();
         @NonNull final Group group = groupService.mergeByName(groupName);
         @NonNull final String versionName = result.getVersion();
         if (versionName.isEmpty()) throw new VersionEmptyException();
         @NonNull final Version version = versionService.mergeByName(versionName);
-        @NonNull final String artifactName = result.getArtifact();
+        @NonNull final String artifactName = result.getArtifactId();
         if (artifactName.isEmpty()) throw new ArtifactEmptyException();
         @NonNull final ArtifactType artifactType = ArtifactType.valueOf(result.getType());
         @NonNull final Artifact artifact = artifactService.merge(artifactName, group.getId(), artifactType, valueDto);
@@ -121,8 +118,8 @@ public class JacocoResultServiceBean implements JacocoResultService {
         float coverage = 0f;
 
         for (@NonNull final Artifact artifact: children) {
-            branches += artifact.getBranches();
-            instructions += artifact.getInstructions();
+//            branches += artifact.getBranches();
+//            instructions += artifact.getInstructions();
             coverage += artifact.getCoverage();
         }
 
@@ -132,8 +129,8 @@ public class JacocoResultServiceBean implements JacocoResultService {
 
         final Artifact artifact = artifactService.findById(parentId);
         if (artifact == null) return null;
-        artifact.setBranches(branches);
-        artifact.setInstructions(instructions);
+//        artifact.setBranches(branches);
+//        artifact.setInstructions(instructions);
         artifact.setCoverage(coverage);
         artifactService.save(artifact);
 //        Jacoco jacoco = jacocoService.create(artifact.getId(), version.getId(), branch.getId(), coverage, instructions, branches);
