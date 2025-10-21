@@ -12,7 +12,7 @@ import ru.volnenko.cloud.testhub.service.JacocoResultServiceBean;
 
 @RestController
 @RequestMapping("/api/v1/result/jacoco")
-public class JacocoResultRestControllerBean implements JacocoResultRestController {
+public final class JacocoResultRestControllerBean implements JacocoResultRestController {
 
     @Autowired
     private JacocoResultServiceBean jacocoResultService;

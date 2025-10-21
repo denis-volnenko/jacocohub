@@ -16,13 +16,20 @@ public class JacocoServiceBean implements JacocoService {
     @Autowired
     private JacocoRepository jacocoRepository;
 
+    @Override
+    @Transactional(readOnly = true)
+    public Jacoco findById(@NonNull final String id) {
+        return jacocoRepository.findById(id).orElse(null);
+    }
+
     @NonNull
     @Override
+    @Transactional
     public Jacoco create(
-            @NonNull String artifactId,
-            @NonNull String versionId,
+            @NonNull final String artifactId,
+            @NonNull final String versionId,
             @NonNull final String branchId,
-            @NonNull ValueDto valueDto
+            @NonNull final ValueDto valueDto
     ) {
         @NonNull final Jacoco jacoco = new Jacoco();
         jacoco.setArtifactId(artifactId);

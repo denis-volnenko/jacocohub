@@ -3,16 +3,14 @@ package ru.volnenko.cloud.testhub.controller;
 import lombok.NonNull;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.servlet.ModelAndView;
 
 @Controller
-public final class AboutControllerBean implements AboutController {
+public interface ResultController {
 
     @NonNull
-    @Override
-    @GetMapping("/ui/about")
-    public ModelAndView about() {
-        return new ModelAndView("about");
-    }
+    @GetMapping("/ui/result/{id}")
+    ModelAndView result(@PathVariable("id") @NonNull String id);
 
 }

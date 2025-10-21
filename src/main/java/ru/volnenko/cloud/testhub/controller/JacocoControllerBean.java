@@ -6,7 +6,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.servlet.ModelAndView;
 
 @Controller
-public class JacocoControllerBean implements JacocoController {
+public final class JacocoControllerBean implements JacocoController {
 
     @NonNull
     @Override

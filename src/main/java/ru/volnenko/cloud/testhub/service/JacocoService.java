@@ -11,7 +11,11 @@ import java.util.List;
 @Service
 public interface JacocoService {
 
+    @Transactional(readOnly = true)
+    Jacoco findById(@NonNull String id);
+
     @NonNull
+    @Transactional
     Jacoco create(
             @NonNull String artifactId,
             @NonNull String versionId,
@@ -22,4 +26,5 @@ public interface JacocoService {
     @NonNull
     @Transactional(readOnly = true)
     List<Jacoco> findAllByArtifactId(@NonNull String artifactId);
+
 }

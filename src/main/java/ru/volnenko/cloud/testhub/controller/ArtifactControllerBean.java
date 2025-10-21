@@ -12,7 +12,7 @@ import ru.volnenko.cloud.testhub.model.Version;
 import ru.volnenko.cloud.testhub.service.*;
 
 @Controller
-public class ArtifactControllerBean implements ArtifactController {
+public final class ArtifactControllerBean implements ArtifactController {
 
     @Autowired
     private ArtifactService artifactService;

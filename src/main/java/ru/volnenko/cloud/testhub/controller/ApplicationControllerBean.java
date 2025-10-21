@@ -8,7 +8,7 @@ import org.springframework.web.servlet.ModelAndView;
 import ru.volnenko.cloud.testhub.service.ArtifactService;
 
 @Controller
-public class ApplicationControllerBean implements ApplicationController {
+public final class ApplicationControllerBean implements ApplicationController {
 
     @Autowired
     private ArtifactService artifactService;

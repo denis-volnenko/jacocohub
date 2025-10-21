@@ -24,7 +24,9 @@
 <#list results as result>
     <tr>
         <td width="30" nowrap="nowrap" align="center"><#if index??>${index?string["00"]}.</#if></td>
-        <td width="100%">${result.created}</td>
+        <td width="100%">
+            <a href="/ui/result/${result.id}">${result.created}</a>
+        </td>
         <#assign branch = controller.getBranch(result.branchId) />
         <td nowrap="nowrap" align="left"><#if branch??>${branch.name}</#if></td>
         <#assign version = controller.getVersion(result.versionId) />
