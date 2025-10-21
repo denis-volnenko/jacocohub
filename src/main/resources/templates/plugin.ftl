@@ -42,11 +42,7 @@
                 &lt;artifactId&gt;jacocohub-maven-plugin&lt;/artifactId&gt;
                 &lt;version&gt;1.0.0&lt;/version&gt;
                 &lt;configuration&gt;
-                    &lt;testhub&gt;http://localhost:8080&lt;/testhub&gt;
-                    &lt;groupId&gt;&dollar;{project.groupId}&lt;/groupId&gt;
-                    &lt;artifactId&gt;&dollar;{project.artifactId}&lt;/artifactId&gt;
-                    &lt;version&gt;&dollar;{project.groupId}&lt;/version&gt;
-                    &lt;ignoreError&gt;true&lt;/ignoreError&gt;
+                    &lt;jacocohub&gt;http://localhost:8080&lt;/jacocohub&gt;
                     &lt;type&gt;APPLICATION&lt;/type&gt;
                     &lt;branch&gt;master&lt;/branch&gt;
                 &lt;/configuration&gt;
@@ -100,11 +96,7 @@
                 &lt;artifactId&gt;jacocohub-maven-plugin&lt;/artifactId&gt;
                 &lt;version&gt;1.0.0&lt;/version&gt;
                 &lt;configuration&gt;
-                    &lt;testhub&gt;http://localhost:8080&lt;/testhub&gt;
-                    &lt;groupId&gt;&dollar;{project.groupId}&lt;/groupId&gt;
-                    &lt;artifactId&gt;&dollar;{project.artifactId}&lt;/artifactId&gt;
-                    &lt;version&gt;&dollar;{project.groupId}&lt;/version&gt;
-                    &lt;ignoreError&gt;true&lt;/ignoreError&gt;
+                    &lt;jacocohub&gt;http://localhost:8080&lt;/jacocohub&gt;
                     &lt;type&gt;LIBRARY&lt;/type&gt;
                     &lt;branch&gt;master&lt;/branch&gt;
                 &lt;/configuration&gt;

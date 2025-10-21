@@ -13,11 +13,11 @@
 <table width="100%" cellpadding="10" cellspacing="0" border="1">
 
     <tr>
-        <th>№</th>
-        <th align="left">ДАТА СОЗДАНИЯ</th>
-        <th align="left">ВЕТКА</th>
-        <th>ВЕРСИЯ</th>
-        <th>ПОКРЫТИЕ</th>
+        <th width="30" nowrap="nowrap" align="center">№</th>
+        <th width="100%" align="left">ДАТА СОЗДАНИЯ</th>
+        <th nowrap="nowrap" align="left">ВЕТКА</th>
+        <th nowrap="nowrap" align="right">ВЕРСИЯ</th>
+        <th align="right">ПОКРЫТИЕ</th>
     </tr>
 
 <#assign index = 1>
@@ -33,6 +33,11 @@
     </tr>
     <#assign index = index + 1>
 </#list>
+<#if !results?has_content>
+    <tr>
+        <td colspan="4" align="center">ОТСУТСТВУЮТ ДАННЫЕ</td>
+    </tr>
+</#if>
 </table>
 
 <#include '/include/footer.ftl'>

@@ -4,10 +4,10 @@
 
 <table width="100%" cellpadding="10" cellspacing="0" border="1">
     <tr>
-        <th>№</th>
-        <th align="left">ТИП</th>
-        <th align="left">НАЗВАНИЕ</th>
-        <th>ПОКРЫТИЕ</th>
+        <th width="30" nowrap="nowrap" align="center">№</th>
+        <th align="left" nowrap="nowrap">ТИП</th>
+        <th align="left"  width="100%">НАЗВАНИЕ</th>
+        <th align="right">ПОКРЫТИЕ</th>
     </tr>
     <#assign index = 1>
     <#list artifacts as item>
@@ -19,6 +19,11 @@
         </tr>
         <#assign index = index + 1>
     </#list>
+    <#if !artifacts?has_content>
+        <tr>
+            <td colspan="4" align="center">ОТСУТСТВУЮТ ДАННЫЕ</td>
+        </tr>
+    </#if>
 </table>
 
 <#include '/include/footer.ftl'>
