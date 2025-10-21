@@ -4,6 +4,7 @@ import lombok.NonNull;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+import ru.volnenko.cloud.testhub.dto.ValueDto;
 import ru.volnenko.cloud.testhub.model.Jacoco;
 import ru.volnenko.cloud.testhub.repository.JacocoRepository;
 
@@ -18,21 +19,14 @@ public class JacocoServiceBean implements JacocoService {
     @NonNull
     @Override
     public Jacoco create(
-            @NonNull final String releaseId,
             @NonNull String artifactId,
             @NonNull String versionId,
             @NonNull final String branchId,
-            @NonNull final Float coverage,
-            @NonNull final Float instructions,
-            @NonNull final Float branches
+            @NonNull ValueDto valueDto
     ) {
         @NonNull final Jacoco jacoco = new Jacoco();
-        jacoco.setReleaseId(releaseId);
         jacoco.setArtifactId(artifactId);
         jacoco.setVersionId(versionId);
-        jacoco.setBranches(branches);
-        jacoco.setInstructions(instructions);
-        jacoco.setCoverage(coverage);
         jacoco.setBranchId(branchId);
         return jacocoRepository.save(jacoco);
     }

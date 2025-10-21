@@ -3,11 +3,15 @@ package ru.volnenko.cloud.testhub.service;
 import jakarta.annotation.PostConstruct;
 import lombok.NonNull;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.scheduling.annotation.Async;
 import org.springframework.stereotype.Service;
 import ru.volnenko.cloud.testhub.dto.JacocoResultDto;
 
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
+
 @Service
-public class InitServiceBean implements InitService {
+public class InitServiceBean implements InitService, Runnable {
 
     @Autowired
     private JacocoService jacocoService;
@@ -18,11 +22,15 @@ public class InitServiceBean implements InitService {
     @Override
     @PostConstruct
     public void init() {
-        for (int i = 0; i < 20; i++) {
-            jacocoResultService.publish(core());
-            jacocoResultService.publish(api());
-            jacocoResultService.publish(worker());
-        }
+        for (int i = 0; i < 15; i++) run();
+    }
+
+    @Override
+    @Async
+    public void run() {
+        jacocoResultService.publish(core());
+        jacocoResultService.publish(api());
+        jacocoResultService.publish(worker());
     }
 
     @NonNull

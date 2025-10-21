@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.RestController;
 import ru.volnenko.cloud.testhub.dto.JacocoResultDto;
 import ru.volnenko.cloud.testhub.dto.ResultDto;
 
-@RequestMapping("/api/result/jacoco")
+@RequestMapping("/api/v1/result/jacoco")
 public interface JacocoResultRestController {
 
     @Operation(summary = "Публикация результатов Jacoco", description = "Публикация результатов Jacoco")

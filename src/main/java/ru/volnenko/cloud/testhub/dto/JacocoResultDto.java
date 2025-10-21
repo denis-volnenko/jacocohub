@@ -42,10 +42,28 @@ public final class JacocoResultDto {
     @NonNull
     private String version = "";
 
-    @NonNull
-    private Float branches = 0F;
+    private double instructionMissed = 0;
 
-    @NonNull
-    private Float instructions = 0F;
+    private double instructionCovered = 0;
+
+    private double branchMissed = 0;
+
+    private double branchCovered = 0;
+
+    private double lineMissed = 0;
+
+    private double lineCovered = 0;
+
+    private double complexityMissed = 0;
+
+    private double complexityCovered = 0;
+
+    private double methodMissed = 0;
+
+    private double methodCovered = 0;
+
+    private double classMissed = 0;
+
+    private double classCovered = 0;
 
 }

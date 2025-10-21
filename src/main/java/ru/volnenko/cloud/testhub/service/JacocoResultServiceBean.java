@@ -3,7 +3,9 @@ package ru.volnenko.cloud.testhub.service;
 import lombok.NonNull;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
+import ru.volnenko.cloud.testhub.dto.ValueDto;
 import ru.volnenko.cloud.testhub.dto.JacocoResultDto;
 import ru.volnenko.cloud.testhub.enumerated.ArtifactType;
 import ru.volnenko.cloud.testhub.exception.ArtifactEmptyException;
@@ -11,6 +13,8 @@ import ru.volnenko.cloud.testhub.exception.BranchEmptyException;
 import ru.volnenko.cloud.testhub.exception.GroupEmptyException;
 import ru.volnenko.cloud.testhub.exception.VersionEmptyException;
 import ru.volnenko.cloud.testhub.model.*;
+
+import java.util.List;
 
 @Service
 public class JacocoResultServiceBean implements JacocoResultService {
@@ -44,11 +48,31 @@ public class JacocoResultServiceBean implements JacocoResultService {
 
     @Override
     @NonNull
-    @Transactional
     public Jacoco publish(@NonNull final JacocoResultDto result) {
-        @NonNull final Float branches = result.getBranches();
-        @NonNull final Float instructions = result.getInstructions();
-        @NonNull final Float coverage = (branches + instructions) / 2;
+        @NonNull Data data = process(result);
+//        path(data);
+        return data.jacoco;
+    }
+
+    @lombok.Data
+    private class Data {
+
+        private JacocoResultDto result;
+        private Artifact artifact;
+        private Version version;
+        private Branch branch;
+        private Jacoco jacoco;
+
+    }
+
+    @NonNull
+    @Transactional(propagation = Propagation.REQUIRES_NEW)
+    public Data process(@NonNull final JacocoResultDto result) {
+        ValueDto valueDto = new ValueDto(result);
+//        @NonNull final Float branches = result.getBranchesPercent();
+//        @NonNull final Float instructions = result.getInstructionsPercent();
+//        @NonNull final Float coverage = (branches + instructions) / 2;
+
         @NonNull final String branchName = result.getBranch();
         @NonNull final Branch branch = branchService.mergeByName(branchName);
         if (branchName.isEmpty()) throw new BranchEmptyException();
@@ -61,29 +85,68 @@ public class JacocoResultServiceBean implements JacocoResultService {
         @NonNull final String artifactName = result.getArtifact();
         if (artifactName.isEmpty()) throw new ArtifactEmptyException();
         @NonNull final ArtifactType artifactType = ArtifactType.valueOf(result.getType());
-        @NonNull final Artifact artifact = artifactService.merge(artifactName, group.getId(), artifactType, coverage, instructions, branches);
+        @NonNull final Artifact artifact = artifactService.merge(artifactName, group.getId(), artifactType, valueDto);
         @NonNull final Release release = releaseService.mergeByArtifactIdAndVersionId(artifact.getId(), version.getId());
-        @NonNull Jacoco jacoco = jacocoService.create(release.getId(), artifact.getId(), version.getId(), branch.getId(), coverage, instructions, branches);
+        @NonNull Jacoco jacoco = jacocoService.create(artifact.getId(), version.getId(), branch.getId(), valueDto);
 
-        final Parent parent = parent(result);
-        if (parent != null) {
-            @NonNull final Child child = child(artifact);
-            pathService.merge(parent, child);
-        }
-
-        return jacoco;
+        @NonNull final Data data = new Data();
+        data.setJacoco(jacoco);
+        data.setResult(result);
+        data.setBranch(branch);
+        data.setVersion(version);
+        data.setArtifact(artifact);
+        return data;
     }
 
-    public void calc(@NonNull final Parent parent) {
+    @Transactional(propagation = Propagation.REQUIRES_NEW)
+    public void path(@NonNull final Data data) {
+        final Parent parent = parent(data.getResult());
+        if (parent != null) {
+            @NonNull final Child child = child(data.artifact);
+            pathService.merge(parent, child);
+            calc(parent, data.version, data.branch);
+        }
+    }
+
+    public Jacoco calc(
+            @NonNull final Parent parent,
+            @NonNull final Version version,
+            @NonNull final Branch branch
+    ) {
         @NonNull final String parentId = parent.getId();
+        @NonNull final List<Artifact> children = artifactService.findAllChildren(parentId);
+        final int size = children.size();
+        float branches = 0f;
+        float instructions = 0f;
+        float coverage = 0f;
+
+        for (@NonNull final Artifact artifact: children) {
+            branches += artifact.getBranches();
+            instructions += artifact.getInstructions();
+            coverage += artifact.getCoverage();
+        }
+
+        coverage = coverage / size;
+        instructions = instructions / size;
+        branches = coverage / size;
+
+        final Artifact artifact = artifactService.findById(parentId);
+        if (artifact == null) return null;
+        artifact.setBranches(branches);
+        artifact.setInstructions(instructions);
+        artifact.setCoverage(coverage);
+        artifactService.save(artifact);
+//        Jacoco jacoco = jacocoService.create(artifact.getId(), version.getId(), branch.getId(), coverage, instructions, branches);
+//        return jacoco;
+        return null;
     }
 
     @NonNull
-    private Child child(@NonNull final Artifact artifact) {
+    public Child child(@NonNull final Artifact artifact) {
         return childService.merge(artifact);
     }
 
-    private Parent parent(@NonNull final JacocoResultDto result) {
+    public Parent parent(@NonNull final JacocoResultDto result) {
         @NonNull final String branchName = result.getBranch();
         if (branchName.isEmpty()) return null;
         @NonNull final Branch branch = branchService.mergeByName(branchName);

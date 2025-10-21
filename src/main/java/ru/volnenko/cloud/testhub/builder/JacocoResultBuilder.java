@@ -98,13 +98,13 @@ public final class JacocoResultBuilder {
 
     @NonNull
     public JacocoResultBuilder branches(@NonNull final Float branches) {
-        jacocoResultDto.setBranches(branches);
+        jacocoResultDto.setBranchesPercent(branches);
         return this;
     }
 
     @NonNull
     public JacocoResultBuilder instructions(@NonNull final Float instructions) {
-        jacocoResultDto.setInstructions(instructions);
+        jacocoResultDto.setInstructionsPercent(instructions);
         return this;
     }
 

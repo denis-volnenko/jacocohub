@@ -9,7 +9,7 @@ import java.util.List;
 
 public interface JacocoRepository extends JpaRepository<Jacoco, String> {
 
-    @Query("SELECT j FROM Jacoco j JOIN Release r ON j.releaseId = r.id AND r.artifactId = :artifactId ORDER BY j.created DESC")
+    @Query("SELECT j FROM Jacoco j WHERE j.artifactId = :artifactId ORDER BY j.created DESC")
     List<Jacoco> findAllByArtifactId(@Param("artifactId") String artifactId);
 
 }

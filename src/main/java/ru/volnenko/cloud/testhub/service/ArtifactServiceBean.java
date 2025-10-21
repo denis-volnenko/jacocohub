@@ -4,6 +4,7 @@ import lombok.NonNull;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+import ru.volnenko.cloud.testhub.dto.ValueDto;
 import ru.volnenko.cloud.testhub.enumerated.ArtifactType;
 import ru.volnenko.cloud.testhub.model.Artifact;
 import ru.volnenko.cloud.testhub.repository.ArtifactRepository;
@@ -21,6 +22,12 @@ public class ArtifactServiceBean implements ArtifactService {
     @Transactional(readOnly = true)
     public List<Artifact> findAll() {
         return artifactRepository.findAll();
+    }
+
+    @NonNull
+    @Override
+    public List<Artifact> findAllChildren(@NonNull final String parentId) {
+        return artifactRepository.findAllChildren(parentId);
     }
 
     @NonNull
@@ -100,13 +107,11 @@ public class ArtifactServiceBean implements ArtifactService {
             @NonNull final String name,
             @NonNull final String groupId,
             @NonNull final ArtifactType artifactType,
-            @NonNull final Float coverage,
-            @NonNull final Float instructions,
-            @NonNull final Float branches
+            @NonNull ValueDto valueDto
     ) {
         final Artifact artifact = findByNameAndGroupId(name, groupId);
         if (artifact != null) return artifact;
-        return save(name, groupId, artifactType, coverage, instructions, branches);
+        return save(name, groupId, artifactType, valueDto);
     }
 
     @NonNull
@@ -116,17 +121,15 @@ public class ArtifactServiceBean implements ArtifactService {
             @NonNull final String name,
             @NonNull final String groupId,
             @NonNull final ArtifactType artifactType,
-            @NonNull final Float coverage,
-            @NonNull final Float instructions,
-            @NonNull final Float branches
+            @NonNull ValueDto valueDto
     ) {
         @NonNull final Artifact artifact = new Artifact();
         artifact.setGroupId(groupId);
         artifact.setName(name);
         artifact.setType(artifactType);
-        artifact.setCoverage(coverage);
-        artifact.setInstructions(instructions);
-        artifact.setBranches(branches);
+//        artifact.setCoverage(coverage);
+//        artifact.setInstructions(instructions);
+//        artifact.setBranches(branches);
         return save(artifact);
     }
 

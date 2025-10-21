@@ -3,6 +3,7 @@ package ru.volnenko.cloud.testhub.service;
 import lombok.NonNull;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+import ru.volnenko.cloud.testhub.dto.ValueDto;
 import ru.volnenko.cloud.testhub.enumerated.ArtifactType;
 import ru.volnenko.cloud.testhub.model.Artifact;
 import ru.volnenko.cloud.testhub.model.Jacoco;
@@ -38,9 +39,7 @@ public interface ArtifactService {
             @NonNull String name,
             @NonNull String groupId,
             @NonNull ArtifactType artifactType,
-            @NonNull Float coverage,
-            @NonNull Float instructions,
-            @NonNull Float branches
+            @NonNull ValueDto valueDto
     );
 
     @NonNull
@@ -49,14 +48,16 @@ public interface ArtifactService {
             @NonNull String name,
             @NonNull String groupId,
             @NonNull ArtifactType artifactType,
-            @NonNull Float coverage,
-            @NonNull Float instructions,
-            @NonNull Float branches
+            @NonNull ValueDto valueDto
     );
 
     @NonNull
     @Transactional(readOnly = true)
     List<Artifact> findAll();
+
+    @NonNull
+    @Transactional(readOnly = true)
+    List<Artifact> findAllChildren(String parentId);
 
     @NonNull
     @Transactional(readOnly = true)

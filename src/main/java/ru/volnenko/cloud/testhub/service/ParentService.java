@@ -9,4 +9,6 @@ public interface ParentService {
 
     Parent merge(@NonNull String id);
 
+    Parent save(@NonNull String id);
+
 }
