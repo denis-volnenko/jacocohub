@@ -1,5 +1,6 @@
 package ru.volnenko.cloud.testhub.service;
 
+import jakarta.annotation.PostConstruct;
 import lombok.NonNull;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.scheduling.annotation.Async;
@@ -34,6 +35,8 @@ public class InitServiceBean implements InitService, Runnable {
         return JacocoResultDto.create()
                 .category("jacocohub")
                 .group("ru.volnenko.cloud").artifact("jacocohub-worker").version("1.0.0").application()
+                .branchMissed(rand()).branchCovered(rand())
+                .instructionMissed(rand()).instructionCovered(rand())
                 .build();
     }
 
@@ -42,6 +45,8 @@ public class InitServiceBean implements InitService, Runnable {
         return JacocoResultDto.create()
                 .category("jacocohub")
                 .group("ru.volnenko.cloud").artifact("jacocohub-api").version("1.0.0").application()
+                .branchMissed(rand()).branchCovered(rand())
+                .instructionMissed(rand()).instructionCovered(rand())
                 .build();
     }
 
@@ -50,11 +55,13 @@ public class InitServiceBean implements InitService, Runnable {
         return JacocoResultDto.create()
                 .category("jacocohub")
                 .group("ru.volnenko.cloud").artifact("jacocohub-core").version("1.0.0").library()
+                .branchMissed(rand()).branchCovered(rand())
+                .instructionMissed(rand()).instructionCovered(rand())
                 .build();
     }
 
     private float rand() {
-        int min = 20;
+        int min = 10;
         int max = 90;
         int randomInt = min + (int)(Math.random() * ((max - min) + 1));
         return randomInt;

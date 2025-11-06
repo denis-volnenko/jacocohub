@@ -6,6 +6,7 @@ import org.springframework.transaction.annotation.Transactional;
 import ru.volnenko.cloud.testhub.dto.ValueDto;
 import ru.volnenko.cloud.testhub.model.Jacoco;
 
+import java.util.Date;
 import java.util.List;
 
 @Service
@@ -20,6 +21,7 @@ public interface JacocoService {
             @NonNull String artifactId,
             @NonNull String versionId,
             @NonNull String branchId,
+            @NonNull Date date,
             @NonNull ValueDto valueDto
     );
 

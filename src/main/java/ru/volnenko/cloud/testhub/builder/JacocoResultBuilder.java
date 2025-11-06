@@ -63,6 +63,30 @@ public final class JacocoResultBuilder {
     }
 
     @NonNull
+    public JacocoResultBuilder instructionMissed(final double instructionMissed) {
+        jacocoResultDto.setInstructionMissed(instructionMissed);
+        return this;
+    }
+
+    @NonNull
+    public JacocoResultBuilder instructionCovered(final double instructionCovered) {
+        jacocoResultDto.setInstructionCovered(instructionCovered);
+        return this;
+    }
+
+    @NonNull
+    public JacocoResultBuilder branchMissed(final double branchMissed) {
+        jacocoResultDto.setBranchMissed(branchMissed);
+        return this;
+    }
+
+    @NonNull
+    public JacocoResultBuilder branchCovered(final double branchCovered) {
+        jacocoResultDto.setBranchCovered(branchCovered);
+        return this;
+    }
+
+    @NonNull
     public JacocoResultDto build() {
         return jacocoResultDto;
     }

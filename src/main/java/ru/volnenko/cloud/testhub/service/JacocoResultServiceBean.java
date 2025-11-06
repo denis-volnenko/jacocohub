@@ -14,6 +14,8 @@ import ru.volnenko.cloud.testhub.exception.GroupEmptyException;
 import ru.volnenko.cloud.testhub.exception.VersionEmptyException;
 import ru.volnenko.cloud.testhub.model.*;
 
+import java.util.Date;
+
 @Service
 public class JacocoResultServiceBean implements JacocoResultService {
 
@@ -38,7 +40,14 @@ public class JacocoResultServiceBean implements JacocoResultService {
     @Override
     @NonNull
     public Jacoco publish(@NonNull final JacocoResultDto result) {
-        @NonNull Data data = process(result);
+        @NonNull Data data = process(result, new Date());
+        return data.jacoco;
+    }
+
+    @NonNull
+    @Override
+    public Jacoco publish(@NonNull JacocoResultDto result, @NonNull Date date) {
+        @NonNull Data data = process(result, date);
         return data.jacoco;
     }
 
@@ -55,7 +64,7 @@ public class JacocoResultServiceBean implements JacocoResultService {
 
     @NonNull
     @Transactional(propagation = Propagation.REQUIRES_NEW)
-    public Data process(@NonNull final JacocoResultDto result) {
+    public Data process(@NonNull final JacocoResultDto result, @NonNull final Date date) {
         ValueDto valueDto = new ValueDto(result);
 
         @NonNull final String branchName = result.getBranch();
@@ -72,7 +81,7 @@ public class JacocoResultServiceBean implements JacocoResultService {
         @NonNull final ArtifactType artifactType = ArtifactType.valueOf(result.getType());
         @NonNull final Artifact artifact = artifactService.merge(artifactName, group.getId(), artifactType, valueDto);
         @NonNull final Release release = releaseService.mergeByArtifactIdAndVersionId(artifact.getId(), version.getId());
-        @NonNull Jacoco jacoco = jacocoService.create(artifact.getId(), version.getId(), branch.getId(), valueDto);
+        @NonNull Jacoco jacoco = jacocoService.create(artifact.getId(), version.getId(), branch.getId(), date, valueDto);
 
         @NonNull final Data data = new Data();
         data.setJacoco(jacoco);

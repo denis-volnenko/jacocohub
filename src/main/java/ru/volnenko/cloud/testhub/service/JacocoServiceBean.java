@@ -8,6 +8,7 @@ import ru.volnenko.cloud.testhub.dto.ValueDto;
 import ru.volnenko.cloud.testhub.model.Jacoco;
 import ru.volnenko.cloud.testhub.repository.JacocoRepository;
 
+import java.util.Date;
 import java.util.List;
 
 @Service
@@ -29,12 +30,15 @@ public class JacocoServiceBean implements JacocoService {
             @NonNull final String artifactId,
             @NonNull final String versionId,
             @NonNull final String branchId,
+            @NonNull final Date date,
             @NonNull final ValueDto valueDto
     ) {
         @NonNull final Jacoco jacoco = new Jacoco();
         jacoco.setArtifactId(artifactId);
         jacoco.setVersionId(versionId);
         jacoco.setBranchId(branchId);
+        jacoco.setCreated(date);
+        jacoco.setUpdated(date);
 
         jacoco.setInstructionMissed(valueDto.getInstructionMissed());
         jacoco.setInstructionCovered(valueDto.getInstructionCovered());
