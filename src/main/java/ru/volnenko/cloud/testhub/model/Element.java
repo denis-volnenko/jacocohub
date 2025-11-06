@@ -15,8 +15,8 @@ import java.util.UUID;
 @Setter
 @Entity
 @NoArgsConstructor
-@Table(name = "hub_path")
-public class Path {
+@Table(name = "hub_element")
+public class Element {
 
     @Id
     @NonNull
@@ -24,10 +24,8 @@ public class Path {
     private String id = UUID.randomUUID().toString();
 
     @NonNull
-    private String parentId;
-
-    @NonNull
-    private String childId;
+    @Column(name = "category_id")
+    private String categoryId;
 
     @CreationTimestamp
     @Temporal(TemporalType.TIMESTAMP)

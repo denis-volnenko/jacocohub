@@ -18,7 +18,7 @@ public class JacocoResultRestControllerTest {
     public void testPublish() {
         @NonNull final JacocoResultDto dto = JacocoResultDto.create()
                 .group("ru.volnenko.cloud").artifact("testhub-core").version("1.0.0")
-                .parent().group("ru.volnenko.cloud").artifact("testhub-app").version("1.0.0").builder()
+//                .parent().group("ru.volnenko.cloud").artifact("testhub-app").version("1.0.0").builder()
 //                .branches(1F).instructions(2F)
                 .build();
         @NonNull final ResultDto resultDto = controller.publish(dto);
