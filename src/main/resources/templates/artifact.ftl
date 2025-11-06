@@ -4,9 +4,9 @@
     ${artifact.type.displayName} "${artifact.name}"
 </h1>
 
-<h2>ГРАФИК ПОКРЫТИЯ ТЕСТАМИ</h2>
-
-<iframe width="100%" height="400" style="border: 1px solid black;"></iframe>
+<center>
+${svg}
+</center>
 
 <h2>ПОСЛЕДНИЕ РЕЗУЛЬТАТЫ</h2>
 
