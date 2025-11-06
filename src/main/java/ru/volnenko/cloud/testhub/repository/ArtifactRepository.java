@@ -10,9 +10,6 @@ import java.util.List;
 
 public interface ArtifactRepository extends JpaRepository<Artifact, String> {
 
-    @Query("SELECT a FROM Artifact a JOIN Path p ON a.id = p.childId WHERE p.parentId = :parentId")
-    List<Artifact> findAllChildren(@Param("parentId") String parentId);
-
     @NonNull
     @Query("SELECT e FROM Artifact e ORDER BY e.name")
     List<Artifact> findAllArtifact();

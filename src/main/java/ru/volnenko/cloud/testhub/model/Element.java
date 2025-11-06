@@ -27,6 +27,10 @@ public class Element {
     @Column(name = "category_id")
     private String categoryId;
 
+    @NonNull
+    @Column(name = "artifact_id")
+    private String artifactId;
+
     @CreationTimestamp
     @Temporal(TemporalType.TIMESTAMP)
     @Column(name = "created")

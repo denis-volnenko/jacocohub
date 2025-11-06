@@ -21,6 +21,12 @@ public final class JacocoResultBuilder {
     }
 
     @NonNull
+    public JacocoResultBuilder category(@NonNull final String category) {
+        jacocoResultDto.getCategories().add(category);
+        return this;
+    }
+
+    @NonNull
     public JacocoResultBuilder application() {
         jacocoResultDto.setType(ArtifactType.APPLICATION.toString());
         return this;

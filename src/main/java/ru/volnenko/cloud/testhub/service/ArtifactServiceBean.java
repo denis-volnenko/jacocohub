@@ -26,12 +26,6 @@ public class ArtifactServiceBean implements ArtifactService {
 
     @NonNull
     @Override
-    public List<Artifact> findAllChildren(@NonNull final String parentId) {
-        return artifactRepository.findAllChildren(parentId);
-    }
-
-    @NonNull
-    @Override
     @Transactional(readOnly = true)
     public List<Artifact> findAllArtifact() {
         return artifactRepository.findAllArtifact();

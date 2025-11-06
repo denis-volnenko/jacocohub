@@ -57,10 +57,6 @@ public interface ArtifactService {
 
     @NonNull
     @Transactional(readOnly = true)
-    List<Artifact> findAllChildren(String parentId);
-
-    @NonNull
-    @Transactional(readOnly = true)
     List<Artifact> findAllArtifact();
 
     @NonNull

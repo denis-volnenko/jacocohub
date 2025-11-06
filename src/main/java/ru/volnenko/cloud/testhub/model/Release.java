@@ -22,9 +22,11 @@ public class Release {
     @NonNull
     private String id = UUID.randomUUID().toString();
 
+    @NonNull
     @Column(name = "artifact_id")
     private String artifactId;
 
+    @NonNull
     @Column(name = "version_id")
     private String versionId;
 
