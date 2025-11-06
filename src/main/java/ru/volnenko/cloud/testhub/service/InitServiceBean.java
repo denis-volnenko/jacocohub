@@ -37,7 +37,7 @@ public class InitServiceBean implements InitService, Runnable {
     private JacocoResultDto worker() {
         return JacocoResultDto.create()
                 .group("ru.volnenko.cloud").artifact("jacocohub-worker").version("1.0.0").application()
-                .parent().group("ru.volnenko.cloud").artifact("jacocohub-app").version("1.0.0").builder()
+//                .parent().group("ru.volnenko.cloud").artifact("jacocohub-app").version("1.0.0").builder()
 //                .branches(rand()).instructions(rand())
                 .build();
     }
@@ -46,7 +46,7 @@ public class InitServiceBean implements InitService, Runnable {
     private JacocoResultDto api() {
         return JacocoResultDto.create()
                 .group("ru.volnenko.cloud").artifact("jacocohub-api").version("1.0.0").application()
-                .parent().group("ru.volnenko.cloud").artifact("jacocohub-app").version("1.0.0").builder()
+//                .parent().group("ru.volnenko.cloud").artifact("jacocohub-app").version("1.0.0").builder()
 //                .branches(rand()).instructions(rand())
                 .build();
     }
@@ -55,7 +55,7 @@ public class InitServiceBean implements InitService, Runnable {
     private JacocoResultDto core() {
         return JacocoResultDto.create()
                 .group("ru.volnenko.cloud").artifact("jacocohub-core").version("1.0.0").library()
-                .parent().group("ru.volnenko.cloud").artifact("jacocohub-app").version("1.0.0").builder()
+//                .parent().group("ru.volnenko.cloud").artifact("jacocohub-app").version("1.0.0").builder()
 //                .branches(rand()).instructions(rand())
                 .build();
     }

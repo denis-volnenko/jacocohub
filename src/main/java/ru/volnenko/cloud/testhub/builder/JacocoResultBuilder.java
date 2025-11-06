@@ -10,9 +10,6 @@ public final class JacocoResultBuilder {
     private final JacocoResultDto jacocoResultDto = new JacocoResultDto();
 
     @NonNull
-    private final JacocoResultParentBuilder parentBuilder = new JacocoResultParentBuilder();
-
-    @NonNull
     private final JacocoResultBuilder self = this;
 
     @NonNull
@@ -20,44 +17,7 @@ public final class JacocoResultBuilder {
         return new JacocoResultBuilder();
     }
 
-    public class JacocoResultParentBuilder {
-
-        @NonNull
-        public JacocoResultParentBuilder artifact(@NonNull final String artifact) {
-            jacocoResultDto.setParentArtifact(artifact);
-            return this;
-        }
-
-        @NonNull
-        public JacocoResultParentBuilder group(@NonNull final String group) {
-            jacocoResultDto.setParentGroup(group);
-            return this;
-        }
-
-        @NonNull
-        public JacocoResultParentBuilder version(@NonNull final String version) {
-            jacocoResultDto.setParentVersion(version);
-            return this;
-        }
-
-        @NonNull
-        public JacocoResultBuilder builder() {
-            return self;
-        }
-
-        @NonNull
-        public JacocoResultDto build() {
-            return self.build();
-        }
-
-    }
-
     private JacocoResultBuilder() {
-    }
-
-    @NonNull
-    public JacocoResultParentBuilder parent() {
-        return parentBuilder;
     }
 
     @NonNull

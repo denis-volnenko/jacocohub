@@ -16,18 +16,6 @@ public final class JacocoResultDto {
     }
 
     @NonNull
-    private String parentGroup = "";
-
-    @NonNull
-    private String parentArtifact = "";
-
-    @NonNull
-    private String parentVersion = "";
-
-    @NonNull
-    private String parentType = ArtifactType.APPLICATION.toString();
-
-    @NonNull
     private String groupId = "";
 
     @NonNull
